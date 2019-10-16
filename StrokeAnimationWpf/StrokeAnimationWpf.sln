@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29326.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrokeAnimationWpf", "StrokeAnimationWpf\StrokeAnimationWpf.csproj", "{02BD41EF-E3E2-4D4C-AAC0-317F697C946D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrokeAnimationLib", "StrokeAnimationLib\StrokeAnimationLib.csproj", "{02603727-BA94-4FCA-8C89-3951A05FB82D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02BD41EF-E3E2-4D4C-AAC0-317F697C946D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02BD41EF-E3E2-4D4C-AAC0-317F697C946D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02BD41EF-E3E2-4D4C-AAC0-317F697C946D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02BD41EF-E3E2-4D4C-AAC0-317F697C946D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02603727-BA94-4FCA-8C89-3951A05FB82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02603727-BA94-4FCA-8C89-3951A05FB82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02603727-BA94-4FCA-8C89-3951A05FB82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02603727-BA94-4FCA-8C89-3951A05FB82D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {611E0909-43FA-4246-AE30-5B29724EB4E6}
+	EndGlobalSection
+EndGlobal

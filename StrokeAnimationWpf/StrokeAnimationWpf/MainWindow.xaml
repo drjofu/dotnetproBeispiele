@@ -1,0 +1,23 @@
+﻿<Window x:Class="StrokeAnimationWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:StrokeAnimationWpf"
+        xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:AnimationLib="clr-namespace:StrokeAnimationLib;assembly=StrokeAnimationLib"
+        Title="MainWindow" Height="450" Width="800">
+  <Grid>
+    <Rectangle Fill="LightCyan" HorizontalAlignment="Left" Height="79.333" Margin="42.529,0,0,108" Stroke="Black" VerticalAlignment="Bottom" Width="183.471" StrokeDashArray="10" SnapsToDevicePixels="True">
+      <Interactions:Interaction.Behaviors>
+        <AnimationLib:ShapeAnimationBehavior AnimationDirection="{Binding ElementName=adc, Path=Direction}"/>
+      </Interactions:Interaction.Behaviors>
+    </Rectangle>
+    <Path Data="M326,83 C335.50005,85.166817 439.50049,127.83334 439.50049,127.83334 L389.50027,159.83387 C389.50027,159.83387 388.16693,190.50117 390.83361,193.83454 393.50029,197.1679 354.16679,191.83484 354.16679,191.83484 354.16679,191.83484 332.83336,185.8348 331.50002,157.16776 330.16668,128.50072 324.83333,126.50069 350.16677,128.50072 375.50021,130.50074 380.83357,121.83396 379.50023,112.50051 378.16689,103.16705 381.50024,78.500063 365.50017,85.166817 349.5001,91.833571 328.83335,103.16705 328.83335,103.16705 328.83335,103.16705 320.83331,111.16716&#xD;&#xA;317.49996,98.500325 314.16662,85.833492 316.49995,80.833183 326,83 z" Fill="LightCyan" Height="113.419" Margin="316.066,82.51,351.5,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" StrokeDashArray="1 10 1" StrokeThickness="5">
+      <Interactions:Interaction.Behaviors>
+        <AnimationLib:ShapeAnimationBehavior AnimationDirection="{Binding ElementName=adc, Path=Direction}"/>
+      </Interactions:Interaction.Behaviors>
+    </Path>
+    <AnimationLib:AnimationDirectionControl Name="adc" HorizontalAlignment="Left" Margin="367,256,0,0" VerticalAlignment="Top" Height="59" Width="81"/>
+
+  </Grid>
+</Window>

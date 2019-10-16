@@ -1,0 +1,139 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp8"
+        xmlns:AnimationLib="clr-namespace:AnimationLib;assembly=AnimationLib" xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors" x:Class="WpfApp8.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Window.Resources>
+    <Storyboard x:Key="BorderAnimation">
+      <DoubleAnimation From="20" To="0" Duration="0:0:1" RepeatBehavior="Forever" By="1" 
+                     Storyboard.TargetProperty="StrokeDashOffset" Storyboard.TargetName="RubberBand"/>
+    </Storyboard>
+    <Storyboard x:Key="Storyboard1">
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="rectangle" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.0" />
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1.0"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[3].(GradientStop.Offset)" Storyboard.TargetName="rectangle" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.05"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1.05"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[4].(GradientStop.Offset)" Storyboard.TargetName="rectangle" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1.1"/>
+      </DoubleAnimationUsingKeyFrames>
+
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="path" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="-0.1" />
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0.4"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="path" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="-0.05"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0.45"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="path" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0.5"/>
+      </DoubleAnimationUsingKeyFrames>
+
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[3].(GradientStop.Offset)" Storyboard.TargetName="path" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.4" />
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[4].(GradientStop.Offset)" Storyboard.TargetName="path" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.45"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1.05"/>
+      </DoubleAnimationUsingKeyFrames>
+      <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[5].(GradientStop.Offset)" Storyboard.TargetName="path" RepeatBehavior="Forever" >
+        <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1.1"/>
+      </DoubleAnimationUsingKeyFrames>
+
+
+    </Storyboard>
+  </Window.Resources>
+  <Window.Triggers>
+    <!--<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard Storyboard="{StaticResource BorderAnimation}"/>
+    </EventTrigger>-->
+    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+      <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+    </EventTrigger>
+  </Window.Triggers>
+  <Grid>
+
+    <!--<Rectangle  x:Name="RubberBand" Stroke="Black" StrokeDashArray="2" StrokeThickness="5" Margin="50"/>-->
+    <Path x:Name="RubberBand" StrokeDashArray="2" Data="M100.44349,116.27006 C152.08283,112.77567 198.56347,129.74768 202.44613,141.39566 206.32879,153.04363 169.4433,160.41996 252.53189,206.23455 335.62047,252.04913 304.55922,160.03169 407.8375,212.44667 511.11578,264.86165 542.95376,65.684913 495.58549,274.9558 448.21722,484.22668 475.78372,337.46532 395.80129,329.31191 315.81887,321.1585 326.69027,218.65831 252.92007,277.28514 179.14987,335.91198 164.00757,357.65438 143.81783,292.42717" Margin="42.529,26.993,514.536,205.902" Stretch="Fill" Stroke="Black" StrokeThickness="5"/>
+    <Button Content="Button" HorizontalAlignment="Left" Margin="61,350,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+    <Button Content="Button" HorizontalAlignment="Left" Margin="165,351,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+    <Button Content="Button" HorizontalAlignment="Left" Margin="277,350,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+    <Rectangle x:Name="rectangle" HorizontalAlignment="Right" Margin="0,68.047,130.412,81.351" Stroke="Black" Width="37.294">
+      <Rectangle.Fill>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+          <GradientStop Color="#FF46E019" Offset="0"/>
+          <GradientStop Color="#FF9FFB84" Offset="1"/>
+          <GradientStop Color="#FF6DEB47" Offset="0.0"/>
+          <GradientStop Color="#FE3B7A28" Offset="0.05"/>
+          <GradientStop Color="#FE75ED51" Offset="0.1"/>
+        </LinearGradientBrush>
+      </Rectangle.Fill>
+    </Rectangle>
+    <Path x:Name="path_Copy" HorizontalAlignment="Right" Height="269.602" Margin="0,74.547,39.27,0" Stroke="Black" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Data="M20,0 L60,0 L60,80 L80,80 L40,100 L0,80 L20,80 L20,0 z">
+      <Path.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform/>
+          <SkewTransform/>
+          <RotateTransform/>
+          <TranslateTransform Y="-0.29799400000000276"/>
+        </TransformGroup>
+      </Path.RenderTransform>
+      <Path.Fill>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+          <GradientStop Color="#FF0087D4" Offset="0"/>
+          <GradientStop Color="#FFFFABE1" Offset="1"/>
+        </LinearGradientBrush>
+      </Path.Fill>
+    </Path>
+    <Path x:Name="path" HorizontalAlignment="Right" Height="269.602" Margin="0,74.547,39.27,0" Stroke="Black" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.5,0.5" Stretch="Fill" Data="M20,0 L60,0 L60,80 L80,80 L40,100 L0,80 L20,80 L20,0 z">
+      <Path.RenderTransform>
+        <TransformGroup>
+          <ScaleTransform/>
+          <SkewTransform/>
+          <RotateTransform/>
+          <TranslateTransform Y="-0.29799400000000276"/>
+        </TransformGroup>
+      </Path.RenderTransform>
+      <Path.Fill>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+          <GradientStop Color="#00C3C3C3" Offset="0.0"/>
+          <GradientStop Color="#B2535552" Offset="0.05"/>
+          <GradientStop Color="#00B6B6B6" Offset="0.109"/>
+          <GradientStop Color="#00C3C3C3" Offset="0.0"/>
+          <GradientStop Color="#B2535552" Offset="0.05"/>
+          <GradientStop Color="#00B6B6B6" Offset="0.109"/>
+        </LinearGradientBrush>
+      </Path.Fill>
+    </Path>
+    <AnimationLib:ShapeAnimation HorizontalAlignment="Left"  Margin="357.999,117.667,0,0" VerticalAlignment="Top" x:Name="Ellipse1" Height="137.333" Width="219.334">
+      <AnimationLib:ShapeAnimation.Shape>
+        <!--<Ellipse StrokeDashArray="2 5 1"  Height="43" Stroke="Black" StrokeThickness="5"  Width="55"/>-->
+        <Path Data="M363.33333,115.66667 L541.33333,93" Fill="#FFF4F4F5"  Stretch="Fill" Stroke="Black"  StrokeDashArray="1 20 4 " StrokeThickness="5" />
+      </AnimationLib:ShapeAnimation.Shape>
+    </AnimationLib:ShapeAnimation>
+    <Rectangle Fill="LightCyan" HorizontalAlignment="Left" Height="79.333" Margin="42.529,0,0,108" Stroke="Black" VerticalAlignment="Bottom" Width="183.471" StrokeDashArray="10" SnapsToDevicePixels="True">
+      <Interactions:Interaction.Behaviors>
+        <AnimationLib:ShapeAnimationBehavior AnimationDirection="Forward"/>
+      </Interactions:Interaction.Behaviors>
+    </Rectangle>
+    <Path Data="M326,83 C335.50005,85.166817 439.50049,127.83334 439.50049,127.83334 L389.50027,159.83387 C389.50027,159.83387 388.16693,190.50117 390.83361,193.83454 393.50029,197.1679 354.16679,191.83484 354.16679,191.83484 354.16679,191.83484 332.83336,185.8348 331.50002,157.16776 330.16668,128.50072 324.83333,126.50069 350.16677,128.50072 375.50021,130.50074 380.83357,121.83396 379.50023,112.50051 378.16689,103.16705 381.50024,78.500063 365.50017,85.166817 349.5001,91.833571 328.83335,103.16705 328.83335,103.16705 328.83335,103.16705 320.83331,111.16716&#xD;&#xA;317.49996,98.500325 314.16662,85.833492 316.49995,80.833183 326,83 z" Fill="LightCyan" Height="113.419" Margin="316.066,82.51,351.5,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" StrokeDashArray="1 10 1" StrokeThickness="5">
+      <Interactions:Interaction.Behaviors>
+        <AnimationLib:ShapeAnimationBehavior AnimationDirection="Reverse"/>
+      </Interactions:Interaction.Behaviors>
+    </Path>
+    <Polygon Points="50,0 100,100 0,100" Fill="Black" HorizontalAlignment="Right" Height="22.833" Margin="0,0,305.5,85.667" Stretch="Fill" Stroke="Black" VerticalAlignment="Bottom" Width="30.5" />
+  </Grid>
+</Window>
