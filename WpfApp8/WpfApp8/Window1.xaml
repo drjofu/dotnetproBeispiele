@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:WpfApp8"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+  <Grid>
+    <Path Data="M423.01689,261.93058 L423.01689,331.22378 509.57117,331.22378 509.57117,374.75133 577.86437,360.49271 604.5061,333.8509 604.5061,258.42825 688.93361,258.42825 688.93361,306.45841" Fill="LightCyan" HorizontalAlignment="Left" Height="121.322" Margin="106.57,62.058,0,0" Stretch="Fill" Stroke="Black" StrokeThickness="5" VerticalAlignment="Top" Width="270.916" StrokeDashCap="Round" ClipToBounds="True" StrokeDashArray="3" StrokeLineJoin="Round"/>
+
+  </Grid>
 </Window>
