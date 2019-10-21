@@ -74,5 +74,27 @@ namespace StrokeAnimationLib
       ((ShapeAnimationBehavior)d).RunAnimation();
     }
 
+
+
+
+    public double AnimationSpeed
+    {
+      get { return (double)GetValue(AnimationSpeedProperty); }
+      set { SetValue(AnimationSpeedProperty, value); }
+    }
+
+    // Using a DependencyProperty as the backing store for AnimationSpeed.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty AnimationSpeedProperty =
+        DependencyProperty.Register("AnimationSpeed", typeof(double), typeof(ShapeAnimationBehavior), new FrameworkPropertyMetadata(1.0, OnAnimationSpeedChanged));
+
+    private static void OnAnimationSpeedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+      ShapeAnimationBehavior behavior = d as ShapeAnimationBehavior;
+      double value = (double)e.NewValue;
+      if (value <= 0 || value > 10) throw new ApplicationException("animation speed must be >0 and <=10");
+      behavior.animation.Duration =TimeSpan.FromSeconds( 1 / value);
+      behavior.storyboard.Stop();
+      behavior.storyboard.Begin();
+    }
   }
 }
