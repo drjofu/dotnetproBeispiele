@@ -22,9 +22,7 @@
                 <RadioButton Content="Forward"  Tag="{x:Static local:AnimationDirection.Forward}" />
                 <RadioButton Content="Reverse" Tag="{x:Static local:AnimationDirection.Reverse}" />
               </StackPanel>
-
             </Grid>
-
           </Border>
         </ControlTemplate>
       </Setter.Value>

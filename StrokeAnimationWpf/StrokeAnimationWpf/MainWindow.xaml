@@ -1,26 +1,32 @@
 ﻿<Window x:Class="StrokeAnimationWpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:StrokeAnimationWpf"
         xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:AnimationLib="clr-namespace:StrokeAnimationLib;assembly=StrokeAnimationLib"
         Title="MainWindow" Height="450" Width="800">
   <Grid>
+    <!--Control zur Steuerung der Animation-->
     <AnimationLib:AnimationDirectionControl Name="adc" HorizontalAlignment="Center" Margin="0,35,0,0" VerticalAlignment="Top" Height="59" Width="80"/>
+    
     <Path Data="M181.40773,45.103004 L181.40773,101.25537 247.86025,101.25537 247.86025,150.18309" HorizontalAlignment="Left" Height="106.079" Margin="181,45,0,0" Stretch="Fill" Stroke="#FF2F68FF" VerticalAlignment="Top" Width="67.453" StrokeThickness="5" StrokeDashArray="3 1" ClipToBounds="True" SnapsToDevicePixels="True">
       <Interactions:Interaction.Behaviors>
         <AnimationLib:ShapeAnimationBehavior AnimationDirection="{Binding ElementName=adc, Path=Direction}"/>
       </Interactions:Interaction.Behaviors>
     </Path>
+    
     <Rectangle HorizontalAlignment="Left" Height="41.97" Margin="132,10,0,0" Stroke="#FF2C60E8" StrokeThickness="5" VerticalAlignment="Top" Width="108.155" Fill="#FF45C4F3"/>
+    
     <Rectangle HorizontalAlignment="Left" Height="41.97" Margin="192,149,0,0" Stroke="#FF2C60E8" StrokeThickness="5" VerticalAlignment="Top" Width="108.155" Fill="#FF45C4F3"/>
+    
     <Ellipse Fill="#FF45C4F3" Height="42.918" Margin="132,0,0,126" Stroke="#FF2C60E8" StrokeThickness="5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="133.047"/>
+    
     <Path Data="M298.14592,172.14163 C346.21459,172.14163 389.49135,182.80006 389.49135,226.57689 389.49135,270.35371 350.8643,271.2122 344.85603,271.2122 338.84777,271.2122 289.06212,282.3715 262.45256,236.87768 235.84299,191.38386 198.07424,205.97615 189.49049,221.42685 180.90675,236.87755 212.66635,244.6031 189.49049,267.77894" HorizontalAlignment="Left" Margin="186,170,0,159" Stretch="Fill" Stroke="#FF2C60E8" StrokeThickness="5" Width="206.514" StrokeDashArray="2" ClipToBounds="True" SnapsToDevicePixels="True" StrokeDashCap="Round" StrokeLineJoin="Round">
       <Interactions:Interaction.Behaviors>
         <AnimationLib:ShapeAnimationBehavior AnimationDirection="{Binding ElementName=adc, Path=Direction}" AnimationSpeed="{Binding ElementName=slider, Path=Value}"/>
       </Interactions:Interaction.Behaviors>
     </Path>
+    
+    <!--Slider zum Einstellen der Animationsgeschwindigkeit der zweiten Verbindungslinie-->
     <Slider x:Name="slider" HorizontalAlignment="Center" Margin="0,119,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.117,0.78" Minimum="0.1" Value="1"/>
 
   </Grid>

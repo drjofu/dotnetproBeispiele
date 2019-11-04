@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:WpfApp8"
         mc:Ignorable="d"
         Title="Window2" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+  <Grid>
+    <Path Data="M181.40773,45.103004 L181.40773,101.25537 247.86025,101.25537 247.86025,150.18309" HorizontalAlignment="Left" Height="106.079" Margin="181.408,45.103,0,0" Stretch="Fill" Stroke="#FF2F68FF" VerticalAlignment="Top" Width="67.453" StrokeThickness="5" StrokeDashArray="2" ClipToBounds="True" SnapsToDevicePixels="True"/>
+    <Rectangle HorizontalAlignment="Left" Height="41.97" Margin="131.622,10,0,0" Stroke="#FF2C60E8" StrokeThickness="5" VerticalAlignment="Top" Width="108.155" Fill="#FF45C4F3"/>
+    <Rectangle HorizontalAlignment="Left" Height="41.97" Margin="191.708,148.608,0,0" Stroke="#FF2C60E8" StrokeThickness="5" VerticalAlignment="Top" Width="108.155" Fill="#FF45C4F3"/>
+    <Ellipse Fill="#FF45C4F3" Height="42.918" Margin="131.622,0,0,110.737" Stroke="#FF2C60E8" StrokeThickness="5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="133.047"/>
+    <Path Data="M298.14592,172.14163 C346.21459,172.14163 389.49135,182.80006 389.49135,226.57689 389.49135,270.35371 350.8643,271.2122 344.85603,271.2122 338.84777,271.2122 289.06212,282.3715 262.45256,236.87768 235.84299,191.38386 198.07424,205.97615 189.49049,221.42685 180.90675,236.87755 212.66635,244.6031 189.49049,267.77894" HorizontalAlignment="Left" Margin="185.977,170.142,0,143.579" Stretch="Fill" Stroke="#FF2C60E8" StrokeThickness="5" Width="206.514" StrokeDashArray="2" ClipToBounds="True" SnapsToDevicePixels="True" StrokeDashCap="Round" StrokeLineJoin="Round"/>
+
+  </Grid>
 </Window>

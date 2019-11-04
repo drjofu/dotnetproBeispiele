@@ -17,9 +17,10 @@ namespace StrokeAnimationLib
 
     public ShapeAnimationBehavior()
     {
+      // Storyboard für Animationen einrichten
       storyboard = new Storyboard();
       animation = new DoubleAnimation();
-      animation.Duration = new System.Windows.Duration(TimeSpan.FromSeconds(1));
+      animation.Duration = new Duration(TimeSpan.FromSeconds(1));
       animation.RepeatBehavior = RepeatBehavior.Forever;
       animation.By = 1;
       Storyboard.SetTargetProperty(animation, new PropertyPath(Shape.StrokeDashOffsetProperty));
@@ -29,15 +30,19 @@ namespace StrokeAnimationLib
     protected override void OnAttached()
     {
       base.OnAttached();
-      RunAnimation();
+      RunAnimation();  // Animation starten, sobald das Behavior einem Control zugeordnet wurde
     }
 
     private void RunAnimation()
     {
       if (AssociatedObject == null) return;
+
+      // Zielelement für die Animation im Storyboard festlegen
       animation.SetValue(Storyboard.TargetProperty, AssociatedObject);
 
+      // Strichlänge berechnen
       var dashLength = AssociatedObject.StrokeDashArray.Sum() * (AssociatedObject.StrokeDashArray.Count % 2 + 1);
+ 
       switch (AnimationDirection)
       {
         case AnimationDirection.Stopped:
@@ -75,8 +80,6 @@ namespace StrokeAnimationLib
     }
 
 
-
-
     public double AnimationSpeed
     {
       get { return (double)GetValue(AnimationSpeedProperty); }
@@ -90,9 +93,13 @@ namespace StrokeAnimationLib
     private static void OnAnimationSpeedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
     {
       ShapeAnimationBehavior behavior = d as ShapeAnimationBehavior;
+
+      // Animationsgeschwindigkeit setzen
       double value = (double)e.NewValue;
       if (value <= 0 || value > 10) throw new ApplicationException("animation speed must be >0 and <=10");
       behavior.animation.Duration =TimeSpan.FromSeconds( 1 / value);
+
+      // Animation mit neuen Werten neu starten
       behavior.storyboard.Stop();
       behavior.storyboard.Begin();
     }
