@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HostedWpfApplication": {
+      "commandName": "Project",
+      "commandLineArgs": "TitleX=\"Titel aus Kommandozeile\""
+    }
+  }
+}
