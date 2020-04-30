@@ -42,8 +42,8 @@ namespace HostedWpfApplication
 
       string path = context.Configuration["MondialPath"];
       services.AddSingleton<World>(new World(path));
-      services.AddSingleton<ContinentsViewModel>();
 
+      services.AddSingleton<ContinentsViewModel>();
       services.AddSingleton<CountriesViewModel>();
 
       services.AddSingleton<WorldState>();
