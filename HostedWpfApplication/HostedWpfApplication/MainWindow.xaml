@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HostedWpfApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-    <TextBlock Text="{Binding Title}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+        Title="{Binding Title}" Height="450" Width="800">
+  <Window.Resources>
+    <ResourceDictionary >
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ViewModelTemplates.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+
+    <ItemsControl ItemsSource="{Binding Commands}" Margin="5" Grid.Row="1">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Button Content="{Binding DisplayText}" Margin="3" Command="{Binding }"  Padding="3"/>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+    <TextBlock Text="{Binding SelectedViewModel.Title}" Grid.Column="1" FontSize="25" FontWeight="Bold" Foreground="DarkBlue" HorizontalAlignment="Center" Margin="10"/>
+    <Border Margin="5" Grid.Column="9" Grid.Row="1" BorderBrush="DarkBlue" BorderThickness="1" Padding="5">
+      <ContentControl Content="{Binding SelectedViewModel}" />
+    </Border>
   </Grid>
 </Window>

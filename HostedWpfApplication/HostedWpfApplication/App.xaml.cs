@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using WorldLib;
+using HostedWpfApplication.ViewModels;
+using HostedWpfApplication.Models;
 
 namespace HostedWpfApplication
 {
@@ -33,6 +36,19 @@ namespace HostedWpfApplication
     {
       // Hier werden die Services für Dependency Injection bereitgestellt
       services.AddSingleton<MainViewModel>();
+
+      services.AddSingleton<IMainController>(p => p.GetRequiredService<MainViewModel>()); // https://andrewlock.net/how-to-register-a-service-with-multiple-interfaces-for-in-asp-net-core-di/
+
+
+      string path = context.Configuration["MondialPath"];
+      services.AddSingleton<World>(new World(path));
+      services.AddSingleton<ContinentsViewModel>();
+
+      services.AddSingleton<CountriesViewModel>();
+
+      services.AddSingleton<WorldState>();
+
+
     }
 
     protected override async void OnExit(ExitEventArgs e)

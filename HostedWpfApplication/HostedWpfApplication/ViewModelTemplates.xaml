@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodels="clr-namespace:HostedWpfApplication.ViewModels"
+                    xmlns:views="clr-namespace:HostedWpfApplication.Views"
+                    xmlns:local="clr-namespace:HostedWpfApplication">
+
+  <!-- Alternativ per C#-Code siehe https://www.ikriv.com/dev/wpf/DataTemplateCreation/-->
+
+
+  <DataTemplate DataType="{x:Type viewmodels:ContinentsViewModel}">
+    <views:ContinentsView/>
+  </DataTemplate>
+  <DataTemplate DataType="{x:Type viewmodels:CountriesViewModel}">
+    <views:CountriesView/>
+  </DataTemplate>
+  
+</ResourceDictionary>
