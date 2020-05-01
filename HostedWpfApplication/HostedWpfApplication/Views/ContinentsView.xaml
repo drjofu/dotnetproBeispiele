@@ -7,7 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
   <Grid>
-    <DataGrid ItemsSource="{Binding Continents}" Margin="20,10,324,263" SelectedItem="{Binding WorldState.SelectedContinent, Mode=TwoWay}"></DataGrid>
-    <Button Content="ShowCountries" Command="{Binding ShowCountriesCommand}" HorizontalAlignment="Left" Margin="41,228,0,0" VerticalAlignment="Top" Width="192" Height="31"/>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="301*"/>
+      <RowDefinition Height="149*"/>
+    </Grid.RowDefinitions>
+    <DataGrid ItemsSource="{Binding Continents}" SelectedItem="{Binding WorldState.SelectedContinent, Mode=TwoWay}"/>
+    <Button Content="ShowCountries" Command="{Binding ShowCountriesCommand}" HorizontalAlignment="Left" Margin="29,23,0,0" VerticalAlignment="Top" Width="192" Height="31" Grid.Row="1"/>
   </Grid>
 </UserControl>

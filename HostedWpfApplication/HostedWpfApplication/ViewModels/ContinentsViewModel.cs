@@ -29,10 +29,16 @@ namespace HostedWpfApplication.ViewModels
       this.world = world;
       this.mainController = mainController;
       this.worldState = worldState;
+      this.worldState.PropertyChanged += WorldState_PropertyChanged;
       this.logger = logger;
       this.Continents = world.GetContinents();
 
-      ShowCountriesCommand = new ActionCommand(ShowCountries);
+      ShowCountriesCommand = new ActionCommand(ShowCountries) { IsEnabled = false };
+    }
+
+    private void WorldState_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+      ShowCountriesCommand.IsEnabled = worldState.SelectedContinent != null;
     }
 
     private void ShowCountries()
