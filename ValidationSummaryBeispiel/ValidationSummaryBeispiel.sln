@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationSummaryBeispiel", "ValidationSummaryBeispiel\ValidationSummaryBeispiel.csproj", "{366E52C7-9579-4790-975C-EB5C758A26F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMUtilities", "MVVMUtilities\MVVMUtilities.csproj", "{9069A0AD-EE89-47D2-98C1-A8443DFF5D4C}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://drjofu.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ValidationSummaryBeispiel\\ValidationSummaryBeispiel.csproj
+		SccProjectName1 = ValidationSummaryBeispiel
+		SccLocalPath1 = ValidationSummaryBeispiel
+		SccProjectUniqueName2 = MVVMUtilities\\MVVMUtilities.csproj
+		SccProjectName2 = MVVMUtilities
+		SccLocalPath2 = MVVMUtilities
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{366E52C7-9579-4790-975C-EB5C758A26F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366E52C7-9579-4790-975C-EB5C758A26F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366E52C7-9579-4790-975C-EB5C758A26F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366E52C7-9579-4790-975C-EB5C758A26F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9069A0AD-EE89-47D2-98C1-A8443DFF5D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9069A0AD-EE89-47D2-98C1-A8443DFF5D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9069A0AD-EE89-47D2-98C1-A8443DFF5D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9069A0AD-EE89-47D2-98C1-A8443DFF5D4C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
