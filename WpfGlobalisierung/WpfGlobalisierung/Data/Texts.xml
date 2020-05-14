@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Texts>
+  <Culture id="de-DE">
+    <Entry id="Begrüßung">Hallo Welt</Entry>
+    <Entry id="InfosAnzeigen">Infos anzeigen</Entry>
+    <Entry id="BegrüßungAusVM">Viele Grüße vom ViewModel</Entry>
+    <Entry id="Fenstertitel">Sprechen Sie Deutsch?</Entry>
+  </Culture>
+  <Culture id="en-GB">
+    <Entry id="Begrüßung">Hello World</Entry>
+    <Entry id="InfosAnzeigen">Show infos</Entry>
+    <Entry id="BegrüßungAusVM">Greetings from the ViewModel (GB)</Entry>
+    <Entry id="Fenstertitel">Do you speak English?</Entry>
+  </Culture>
+  <Culture id="en-US">
+    <Entry id="Begrüßung">Hi guys</Entry>
+    <Entry id="InfosAnzeigen">Show me more</Entry>
+    <Entry id="BegrüßungAusVM">Greetings from the ViewModel (US)</Entry>
+    <Entry id="Fenstertitel">Do you speak American English?</Entry>
+  </Culture>
+  <Culture id="fr-FR">
+    <Entry id="Begrüßung">Bonjour tout le monde</Entry>
+    <Entry id="InfosAnzeigen">montrent infos</Entry>
+    <Entry id="BegrüßungAusVM">Salutations de la ViewModel</Entry>
+    <Entry id="Fenstertitel">Parlez-vous français</Entry>
+  </Culture>
+  <Culture id="fa-IR">
+    <Entry id="Begrüßung">سلام جهان</Entry>
+    <Entry id="InfosAnzeigen">بخش کاربری را نشان می دهد</Entry>
+    <Entry id="BegrüßungAusVM">سلام از برنامه</Entry>
+    <Entry id="Fenstertitel">فارسی صحبت می کنند؟</Entry>
+  </Culture>
+</Texts>
