@@ -22,11 +22,8 @@ namespace WpfAsyncBeispiele
             token.ThrowIfCancellationRequested();
           }
           await Task.Delay(1000);
-          //Thread.Sleep(1000);
-
           //throw new ApplicationException("oh nein...");
 
-          //if (progress != null)
           progress?.Report(i);
         }
 

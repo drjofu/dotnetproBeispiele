@@ -15,9 +15,9 @@ namespace WpfAsyncBeispiele
   /// <summary>
   /// Interaction logic for Beispiel2.xaml
   /// </summary>
-  public partial class Beispiel2 : Window
+  public partial class Beispiel2View : Window
   {
-    public Beispiel2()
+    public Beispiel2View()
     {
       InitializeComponent();
     }

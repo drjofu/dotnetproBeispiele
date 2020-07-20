@@ -9,7 +9,7 @@ using WpfAsyncBasics.ViewModels;
 
 namespace WpfAsyncBeispiele
 {
-  public class ViewModelBeispiel2 : ViewModelBase
+  public class Beispiel2ViewModel : ViewModelBase
   {
     private AsyncTaskModel model;
     private CancellationTokenSource cts;
@@ -35,7 +35,7 @@ namespace WpfAsyncBeispiele
     public ActionCommand StopCommand { get; set; }
 
 
-    public ViewModelBeispiel2()
+    public Beispiel2ViewModel()
     {
       Title = "Task, Cancel, Progress";
       StartCommand = new ActionCommand(Start);
@@ -68,7 +68,7 @@ namespace WpfAsyncBeispiele
         t = model.IncrementAsync(cts.Token, new Progress<int>(ShowProgress));
         Result = await t;
       }
-      catch (Exception ex) { }
+      catch (Exception ) { }
 
       // Aktion beendet -> UI aktualisieren
       Info = t?.Status.ToString();
