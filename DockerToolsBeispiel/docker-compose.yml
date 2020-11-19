@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  dockertoolsbeispielapi1:
+    image: ${DOCKER_REGISTRY-}dockertoolsbeispielapi1
+    build:
+      context: .
+      dockerfile: DockerToolsBeispielApi1/Dockerfile
+    ports:
+    - 9700:80
+    volumes:
+    - mydata:/var/lib/data
+    environment:
+      user: Fritz
+      password: geheim
+
+
+volumes:
+  mydata:
+
