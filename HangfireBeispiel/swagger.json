@@ -1,0 +1,75 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "HFApiClient",
+    "version": "v1"
+  },
+  "paths": {
+    "/JobInfo": {
+      "get": {
+        "tags": [
+          "JobInfo"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/TaskEnqueue": {
+      "post": {
+        "tags": [
+          "TaskEnqueue"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/TaskEnqueue/ServiceB": {
+      "post": {
+        "tags": [
+          "TaskEnqueue"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/TaskEnqueue/ServiceC": {
+      "post": {
+        "tags": [
+          "TaskEnqueue"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

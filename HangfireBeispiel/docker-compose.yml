@@ -1,0 +1,59 @@
+version: '3.4'
+
+services:
+  hfapiclient:
+    image: ${DOCKER_REGISTRY-}hfapiclient
+    depends_on: 
+     - postgres
+    build:
+      context: .
+      dockerfile: HFApiClient/Dockerfile
+    ports:
+     - 6000:80
+
+  hfapiserver1:
+    image: ${DOCKER_REGISTRY-}hfapiserver1
+    depends_on: 
+     - postgres
+    build:
+      context: .
+      dockerfile: HFApiServer1/Dockerfile
+    ports:
+     - 6001:80
+
+  hfconsoleserver2:
+    image: ${DOCKER_REGISTRY-}hfconsoleserver2
+    depends_on: 
+     - postgres
+    build:
+      context: .
+      dockerfile: HFConsoleServer2/Dockerfile
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    volumes: 
+      - hfpostgres:/var/lib/postgresql/data
+    environment: 
+      - POSTGRES_PASSWORD=ganzgeheim
+    ports: 
+      - 5433:5432
+# Datenbank anlegen, falls nicht "postgres" verwendet werden soll, z. B.  mit
+# docker exec -it postgres psql -U postgres -c "CREATE DATABASE hangfire_beispiel ENCODING 'LATIN1' TEMPLATE template0 LC_COLLATE 'C' LC_CTYPE 'C';"
+
+# viewer for Logs
+  dozzle: 
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9999:8080
+
+
+volumes:
+  hfpostgres:
+
+
+
