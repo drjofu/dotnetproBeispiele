@@ -10,6 +10,8 @@ namespace HFApiServer1.Services
   {
     public async Task SendEmail(EmailDetails emailDetails)
     {
+      //throw new ApplicationException("da ist was schiefgegangen");
+
       Console.WriteLine($"*** Server 1 - Sending EMail to {emailDetails.To}, content: {emailDetails.Body}");
       await Task.Delay(5000);
       Console.WriteLine("*** Server 1 - EMail sent to " + emailDetails.To);

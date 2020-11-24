@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 namespace HFCommonLib
 {
+  [AutomaticRetry(Attempts =3)]
   public interface IServiceA
   {
     Task DoSomething(string id, int count);
@@ -16,6 +17,7 @@ namespace HFCommonLib
   }
 
   [Queue("queue2")]
+  [AutomaticRetry(Attempts = 3)]
   public interface IServiceC
   {
     Task SendEmail(EmailDetails emailDetails);

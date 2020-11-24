@@ -13,5 +13,8 @@ services:
     ports:
       - "80"
 
+  hfconsoleserver2:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
 
 

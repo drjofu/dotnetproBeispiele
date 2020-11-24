@@ -18,15 +18,21 @@ namespace HFConsoleServer2
       Console.WriteLine("************************** Console-Service **************************");
       var host = await CreateHostBuilder(args).StartAsync();
 
+      // Hangfire einrichten
       var connstr = host.Services.GetService<IConfiguration>().GetConnectionString("HangfireConnection");
       GlobalConfiguration.Configuration.UsePostgreSqlStorage(connstr);
       GlobalConfiguration.Configuration.SetDataCompatibilityLevel(CompatibilityLevel.Version_170);
       GlobalConfiguration.Configuration.UseSimpleAssemblyNameTypeSerializer();
       GlobalConfiguration.Configuration.UseRecommendedSerializerSettings();
       GlobalConfiguration.Configuration.UseColouredConsoleLogProvider();
+
+      // Activator für .NET-Dependency-Injection einsetzen
       GlobalConfiguration.Configuration.UseActivator(new DIJobActivator(host.Services));
+
+      // Benachrichtigungen einrichten
       //GlobalConfiguration.Configuration.UseFilter(new OnPerformedCallbackFilter(null));
 
+      // Einstellen, aus welchen Queues Aufgaben entnommen werden sollen
       backgroundJobServer = new BackgroundJobServer(new BackgroundJobServerOptions { Queues=new[] { "queue1", "default" } });
 
       Console.ReadLine();
@@ -39,25 +45,28 @@ namespace HFConsoleServer2
 
       builder.ConfigureServices((hostContext, services) =>
       {
+        // Service-Klassen über DI verknüpfen
         services.AddTransient<IServiceA, ServiceA>();
         services.AddTransient<IServiceB, ServiceB>();
       });
-      
       
       return builder;
     }
   }
 
+  // Hilfsklasse für die Verwendung der .NET-Dependency-Injection
   public class DIJobActivator : JobActivator
   {
     private readonly IServiceProvider services;
 
     public DIJobActivator(IServiceProvider services)
     {
+      // Service-Provider speichern
       this.services = services;
     }
     public override object ActivateJob(Type jobType)
     {
+      // Objekt für vorgegebenen Typ von Service-Provider holen
       return services.GetService(jobType);
     }
   }

@@ -39,7 +39,8 @@ namespace HFApiClient.Controllers
     public void PostBasicService()
     {
       var d = new JobData("Just for fun", DateTime.Now);
-      BackgroundJob.Enqueue(() => Console.WriteLine($"Todo at {d.timestamp:hh:mm} - {d.text}"));
+      //BackgroundJob.Enqueue(() => Console.WriteLine($"Todo at {d.timestamp:hh:mm} - {d.text}"));
+      BackgroundJob.Enqueue(() => Console.WriteLine(d));
 
       // {"Type":"System.Console, System.Console, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a","Method":"WriteLine","ParameterTypes":"[\"System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e\"]","Arguments":"[\"\\\"Todo at 06:43 - Just for fun\\\"\"]"}
       // ["\"Todo at 06:43 - Just for fun\""]
