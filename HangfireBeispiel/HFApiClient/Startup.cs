@@ -69,7 +69,6 @@ namespace HFApiClient
       {
         endpoints.MapControllers();
         endpoints.MapHangfireDashboard(new DashboardOptions { Authorization=new[] { new HFAuthorizationFilter() } });
-
       });
 
       //GlobalJobFilters.Filters.Add(new OnPerformedCallbackFilter());

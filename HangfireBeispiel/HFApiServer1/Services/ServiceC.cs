@@ -1,4 +1,5 @@
 ﻿using HFCommonLib;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace HFApiServer1.Services
 {
   public class ServiceC : IServiceC
   {
+    private readonly IConfiguration configuration;
+
+    public ServiceC(IConfiguration configuration)
+    {
+      this.configuration = configuration;
+    }
+
     public async Task SendEmail(EmailDetails emailDetails)
     {
       //throw new ApplicationException("da ist was schiefgegangen");
