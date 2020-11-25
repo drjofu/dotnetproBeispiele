@@ -2,6 +2,7 @@
 using HFCommonLib;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,13 @@ namespace HFApiClient.Controllers
   [ApiController]
   public class TaskEnqueueController : ControllerBase
   {
+    private readonly ILogger<TaskEnqueueController> logger;
+
+    public TaskEnqueueController(ILogger<TaskEnqueueController> logger)
+    {
+      this.logger = logger;
+    }
+
     [HttpPost]
     public void Post()
     {
@@ -20,18 +28,21 @@ namespace HFApiClient.Controllers
 
       string id = "Job " + ms;
       int count = ms % 10;
+      logger.LogInformation("Client - Enqeue IServiceA.DoSomething");
       BackgroundJob.Enqueue<IServiceA>((s) => s.DoSomething(id, count));
     }
 
     [HttpPost("ServiceB")]
     public void PostServiceB()
     {
+      logger.LogInformation("Client - Enqeue IServiceB.DoSomethingElse");
       BackgroundJob.Enqueue<IServiceB>(s => s.DoSomethingElse($"Instanz von ServiceB, eingereiht um {DateTime.Now.ToLongTimeString()}"));
     }
 
     [HttpPost("ServiceC")]
     public void PostServiceC()
     {
+      logger.LogInformation("Client - Enqeue IServiceC.SendEmail");
       BackgroundJob.Enqueue<IServiceC>(s => s.SendEmail(new EmailDetails("somebody@somewhere.com","Inhalt der E-Mail")));
     }
 
