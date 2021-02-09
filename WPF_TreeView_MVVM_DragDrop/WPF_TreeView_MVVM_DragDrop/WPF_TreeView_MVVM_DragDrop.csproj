@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\icons8-bird-50.png" />
+    <None Remove="Images\icons8-camera-50.png" />
+    <None Remove="Images\icons8-kangaroo-50.png" />
+    <None Remove="Images\icons8-opened-folder-50.png" />
+    <None Remove="Images\icons8-sheep-50.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MVVM_Utilities\MVVM_Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\icons8-bird-50.png" />
+    <Resource Include="Images\icons8-camera-50.png" />
+    <Resource Include="Images\icons8-kangaroo-50.png" />
+    <Resource Include="Images\icons8-opened-folder-50.png" />
+    <Resource Include="Images\icons8-sheep-50.png" />
+  </ItemGroup>
+
+</Project>

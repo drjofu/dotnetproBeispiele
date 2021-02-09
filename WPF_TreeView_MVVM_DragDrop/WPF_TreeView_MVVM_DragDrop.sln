@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF_TreeView_MVVM_DragDrop", "WPF_TreeView_MVVM_DragDrop\WPF_TreeView_MVVM_DragDrop.csproj", "{D3560EE2-5900-4475-BE45-A79436938989}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM_Utilities", "MVVM_Utilities\MVVM_Utilities.csproj", "{C2BEBF8B-9E83-4BAC-A817-40AA712C557D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3560EE2-5900-4475-BE45-A79436938989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3560EE2-5900-4475-BE45-A79436938989}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3560EE2-5900-4475-BE45-A79436938989}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3560EE2-5900-4475-BE45-A79436938989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2BEBF8B-9E83-4BAC-A817-40AA712C557D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2BEBF8B-9E83-4BAC-A817-40AA712C557D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2BEBF8B-9E83-4BAC-A817-40AA712C557D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2BEBF8B-9E83-4BAC-A817-40AA712C557D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02FD4551-4BD8-4EB6-81B6-4066810B0F4E}
+	EndGlobalSection
+EndGlobal
