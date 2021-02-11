@@ -25,7 +25,7 @@ namespace WPF_TreeView_MVVM_DragDrop
     {
       InitializeComponent();
       this.DataContext = new MainViewModel();
-
+      
     }
   }
 }

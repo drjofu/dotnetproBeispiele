@@ -3,13 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-  <Grid>
     <Grid >
       <!--AllowDrop muss für TreeView eingeschaltet sein, sonst geht Drag&Drop auch nicht für die TreeViewItems-->
       <!--DragOver blockiert dann ein Drop auf TreeView selbst-->
-      <TreeView Margin="5,5,5,5"  
+      <TreeView Margin="5,5,5,5"   
               AllowDrop="True" 
               ScrollViewer.CanContentScroll="True" 
               ScrollViewer.HorizontalScrollBarVisibility="Auto" 
@@ -31,14 +30,20 @@
             <EventSetter Event="Selected" Handler="TVI_Selected"/>
             <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
             <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=TwoWay}" />
             <Setter Property="ToolTip" Value="{Binding ToolTip}" />
-            
+
             <!--<Setter Property="Foreground" Value="Red"/>-->
           </Style>
         </TreeView.ItemContainerStyle>
         <TreeView.ItemTemplate>
           <HierarchicalDataTemplate ItemsSource="{Binding Items}">
             <ContentPresenter Content="{Binding Data}"/>
+            <HierarchicalDataTemplate.Triggers>
+              <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                <Setter Property="TreeViewItem.Foreground" Value="Red" />
+              </DataTrigger>
+            </HierarchicalDataTemplate.Triggers>
           </HierarchicalDataTemplate>
         </TreeView.ItemTemplate>
       </TreeView>
@@ -48,5 +53,4 @@
       <ContentControl Name="ScrollDownBtn" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="🔽" AllowDrop="True"  DragOver="ScrollDownBtn_DragOver" Visibility="Collapsed"/>
     </Grid>
 
-  </Grid>
 </UserControl>

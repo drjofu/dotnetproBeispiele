@@ -49,6 +49,15 @@ namespace MVVM_Utilities
       set { isExpanded = value; OnPropertyChanged(); }
     }
 
+    private bool isEnabled = true;
+
+    public bool IsEnabled
+    {
+      get { return isEnabled; }
+      set { isEnabled = value; OnPropertyChanged(); }
+    }
+
+
     /// <summary>
     /// Untergeordnete Items
     /// </summary>

@@ -9,18 +9,18 @@ namespace WpfTreeViewBeispiel
 {
   public class MainViewModel : NotificationObject
   {
-    private TreeItem rootTree1;
+    private TreeItem rootTreeItem1;
 
     public TreeItemList Tree1
     {
-      get { return rootTree1.Items; }
+      get { return rootTreeItem1.Items; }
     }
 
-    private TreeItem rootTree2;
+    private TreeItem rootTreeItem2;
 
     public TreeItemList Tree2
     {
-      get { return rootTree2.Items; }
+      get { return rootTreeItem2.Items; }
     }
 
     public ActionCommand ExpandAllCommand { get; set; }
@@ -32,8 +32,8 @@ namespace WpfTreeViewBeispiel
 
     public MainViewModel()
     {
-      rootTree1 = new TreeItem();
-      rootTree2 = new TreeItem();
+      rootTreeItem1 = new TreeItem();
+      rootTreeItem2 = new TreeItem();
 
       // Pfad bei Bedarf anpassen
       var path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
@@ -103,7 +103,7 @@ namespace WpfTreeViewBeispiel
       {
         foreach (var dir in Directory.EnumerateDirectories(directory))
         {
-          var ti = new TreeItem { Data = new DirectoryDataObject { Caption = Path.GetFileName(dir), Level=level }, ToolTip = dir };
+          var ti = new TreeItem { Data = new DirectoryDataObject { Caption = Path.GetFileName(dir), Level=level }, ToolTip = dir, IsEnabled= Path.GetFileName(dir) != "obj" };
           tree.Add(ti);
           FillTree(ti.Items, dir, level+1);
         }

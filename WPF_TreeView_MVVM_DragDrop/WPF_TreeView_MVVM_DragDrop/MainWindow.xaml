@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
          xmlns:mvvm="fuechse-online.de"
          x:Class="WPF_TreeView_MVVM_DragDrop.MainWindow"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1000">
+        mc:Ignorable="d" 
+        Title="TreeView MVVM" Height="700" Width="1000">
   <Grid>
+    <!--<Grid.LayoutTransform>
+      <ScaleTransform ScaleX="2" ScaleY="2"/>
+    </Grid.LayoutTransform>-->
     <Grid>
       <Grid.ColumnDefinitions>
         <ColumnDefinition/>
@@ -20,6 +23,19 @@
       </Grid.RowDefinitions>
       <mvvm:ExtendedTreeView Items="{Binding Tree1}" DragDropController="{Binding DragDropControllerTV1}" Margin="5"/>
       <mvvm:ExtendedTreeView Items="{Binding Tree2}" DragDropController="{Binding DragDropControllerTV1}" Margin="5" Grid.Column="2"/>
+      <!--<TreeView ItemsSource="{Binding Tree2}" Margin="5" Grid.Column="2" >
+        <TreeView.ItemTemplate>
+          <HierarchicalDataTemplate ItemsSource="{Binding Items}">
+            <ContentPresenter Content="{Binding Data}"/>
+            <HierarchicalDataTemplate.Triggers>
+              <DataTrigger Binding="{Binding IsEnabled}" Value="false">
+                <Setter Property="TreeViewItem.Foreground" Value="Red" />
+              </DataTrigger>
+            </HierarchicalDataTemplate.Triggers>
+          </HierarchicalDataTemplate>
+        </TreeView.ItemTemplate>
+
+      </TreeView>-->
 
       <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Background="Gray" />
       <WrapPanel Grid.Row="1" Margin="10">
