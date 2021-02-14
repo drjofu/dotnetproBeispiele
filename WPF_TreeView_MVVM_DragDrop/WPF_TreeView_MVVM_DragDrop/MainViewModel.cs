@@ -53,6 +53,9 @@ namespace WpfTreeViewBeispiel
     {
       var source = draggedObject as TreeItem;
 
+      // Knoten soll nicht auf sich selbst gezogen werden
+      if (draggedObject == target) return false;
+
       // Anwendungsspezifische Aktion
       source.Parent.Items.Remove(source);
       if (verticalPercentage < 20)
@@ -111,6 +114,7 @@ namespace WpfTreeViewBeispiel
         foreach (var file in Directory.EnumerateFiles(directory))
         {
           var ti = new TreeItem { Data = new FileDataObject { Caption = Path.GetFileName(file), Level=level }, ToolTip = file };
+          ti.IsSelectedChanged += Ti_IsSelectedChanged;
           tree.Add(ti);
         }
 
@@ -120,12 +124,19 @@ namespace WpfTreeViewBeispiel
       }
     }
 
+    private void Ti_IsSelectedChanged(object sender, EventArgs e)
+    {
+      var selectedItem = sender as TreeItem;
+      var data = selectedItem?.Data as DataObjectBase;
+      Debug.WriteLine($"Selection changed: {data?.Caption}: {selectedItem.IsSelected} ");
+    }
+
     private void OpenAppXaml()
     {
       var item = FindCaption("App.xaml", Tree1);
       Debug.WriteLine("App.xaml gefunden: " + ((FileDataObject)item.Data).Caption);
       item.IsSelected = true;
-      item.ExpandToParent(true);
+      item.ExpandAncestors(true);
     }
 
     private TreeItem FindCaption(string caption, TreeItemList list)

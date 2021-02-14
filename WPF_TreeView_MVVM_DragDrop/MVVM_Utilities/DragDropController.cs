@@ -8,29 +8,47 @@ using System.Windows;
 namespace MVVM_Utilities
 {
   /// <summary>
+  /// Ermitteln, ob ein TreeItem gezogen werden darf
+  /// </summary>
+  /// <param name="dragSource">das zu ziehende TreeItem</param>
+  /// <returns>true, wenn ja</returns>
+  public delegate bool CanDragHandler(TreeItem dragSource);
+
+  /// <summary>
+  /// Ermitteln, ob ein Objekt auf einem TreeItem abgelegt werden darf
+  /// </summary>
+  /// <param name="draggedItem">das gezogene Objekt</param>
+  /// <param name="dropTarged">das TreeItem unter der Maus</param>
+  /// <param name="yPosition">Prozentwert der Mausposition in Bezug auf das TreeItem in Parameter 2. 0: oben, 100: unten</param>
+  /// <returns>Erlaubte Drag&Drop-Effekte</returns>
+  public delegate DragDropEffects CanDropHandler(object draggedItem, TreeItem dropTarged, double yPosition);
+
+  /// <summary>
+  /// 
+  /// </summary>
+  /// <param name="draggedItem">das gezogene Objekt</param>
+  /// <param name="dropTarget">das TreeItem unter der Maus</param>
+  /// <param name="yPosition">Prozentwert der Mausposition in Bezug auf das TreeItem in Parameter 2. 0: oben, 100: unten</param>
+  /// <returns>Aktion war erfolgreich</returns>
+  public delegate bool DropHandler(object draggedItem, TreeItem dropTarget, double yPosition);
+
+  /// <summary>
   /// Hilfsstruktur zur Bindung von Rückrufmethoden für Drag & Drop
   /// </summary>
   public class DragDropController
   {
     /// <summary>
-    /// Übergabe des zu ziehenden TreeItems, Rückgabe ob erlaubt oder nicht
+    /// Prüfen, ob ein Element gezogen werden darf
     /// </summary>
-    public Func<TreeItem,bool> CanDrag { get; set; }
+    public CanDragHandler CanDrag { get; set; }
 
     /// <summary>
-    /// 1. Parameter: das gezogene Objekt
-    /// 2. Parameter: das TreeItem unter der Maus
-    /// 3. Parameter: Prozentwert der Mausposition in Bezug auf das TreeItem in Parameter 2. 0: oben, 100: unten
-    /// Rückgabe: Erlaubte Drag&Drop-Effekte
+    /// Prüfen, ob ein Element abgelegt werden darf
     /// </summary>
-    public Func<object, TreeItem, double, DragDropEffects> CanDrop { get; set; }
+    public CanDropHandler CanDrop { get; set; }
 
     /// <summary>
-    /// Abschluss der Drag&Drop-Operation
-    /// 1. Parameter: das gezogene Objekt
-    /// 2. Parameter: das TreeItem unter der Maus
-    /// 3. Parameter: Prozentwert der Mausposition in Bezug auf das TreeItem in Parameter 2. 0: oben, 100: unten
-    /// Rückgabe: wird derzeit nicht berücksichtigt
+    /// Schlussbehandlung der Drag&Drop-Aktion
     /// </summary>
     public Func<object, TreeItem, double, bool> Drop { get; set; }
   }

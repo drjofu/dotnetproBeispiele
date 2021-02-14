@@ -17,6 +17,8 @@ namespace MVVM_Utilities
     public FrameworkElementAdorner(UIElement adornedElement, double yPercentage)
         : base(adornedElement)
     {
+      this.AllowDrop = false;
+
       SetPosition(yPercentage);
       this.adornerLayer = AdornerLayer.GetAdornerLayer(this.AdornedElement);
       this.adornerLayer.Add(this);

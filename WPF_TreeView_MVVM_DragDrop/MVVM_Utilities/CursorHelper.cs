@@ -92,7 +92,7 @@ namespace MVVM_Utilities
       element.BorderBrush = Brushes.Black;
       element.BorderThickness = new Thickness(1);
       element.Padding = new Thickness(2);
-      element.Background = new SolidColorBrush(Color.FromArgb(100,50,200,200));
+      element.Background = new SolidColorBrush(Color.FromArgb(230,190,230,230));
       
       element.Visibility = Visibility.Visible;
       element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));

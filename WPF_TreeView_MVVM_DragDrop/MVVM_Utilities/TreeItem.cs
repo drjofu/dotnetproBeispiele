@@ -35,8 +35,19 @@ namespace MVVM_Utilities
     public bool IsSelected
     {
       get { return isSelected; }
-      set { isSelected = value; OnPropertyChanged(); }
+      set
+      {
+        if (isSelected == value) return;
+        isSelected = value; 
+        OnPropertyChanged();
+        IsSelectedChanged?.Invoke(this, EventArgs.Empty);
+      }
     }
+
+    /// <summary>
+    /// Wird gefeuert, wenn sich IsSelected ändert
+    /// </summary>
+    public event EventHandler IsSelectedChanged;
 
     private bool isExpanded;
 
@@ -61,7 +72,7 @@ namespace MVVM_Utilities
     /// <summary>
     /// Untergeordnete Items
     /// </summary>
-    public TreeItemList Items { get; set; } 
+    public TreeItemList Items { get; set; }
 
     /// <summary>
     /// Parent dieses Items
@@ -74,12 +85,12 @@ namespace MVVM_Utilities
     public object ToolTip { get; set; }
 
 
-    public void ExpandToParent(bool expand)
+    public void ExpandAncestors(bool expand)
     {
       if (Parent != null)
       {
         Parent.IsExpanded = expand;
-        Parent.ExpandToParent(expand);
+        Parent.ExpandAncestors(expand);
       }
     }
 
