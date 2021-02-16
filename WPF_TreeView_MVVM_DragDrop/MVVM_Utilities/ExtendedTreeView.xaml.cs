@@ -22,7 +22,7 @@ namespace MVVM_Utilities
 
     private Cursor customCursor = null;
 
-    private FrameworkElementAdorner adorner;
+    private TreeItemDragOverAdorner adorner;
 
 
     public ExtendedTreeView()
@@ -32,6 +32,8 @@ namespace MVVM_Utilities
       InitializeComponent();
     }
 
+    // Nach Ablauf der eingestellten Zeit soll das TreeViewItem unter 
+    // dem Mauszeiger automatisch aufgeklappt werden
     private void DelayTimer_Tick(object sender, EventArgs e)
     {
       delayTimer.Stop();
@@ -105,6 +107,10 @@ namespace MVVM_Utilities
         ScrollUpBtn.Visibility = Visibility.Collapsed;
         ScrollDownBtn.Visibility = Visibility.Collapsed;
 
+        this.adorner?.Remove();
+        adorner = null;
+        customCursor = null;
+
         Debug.WriteLine($"DragDrop completed: {ti}");
       }
 
@@ -153,7 +159,7 @@ namespace MVVM_Utilities
         var draggedTreeItem = e.Data.GetData(typeof(TreeItem));
         var yPercentage = mousePos.Y * 100 / heightHeader;
 
-        this.adorner = new FrameworkElementAdorner(header,yPercentage);
+        this.adorner = new TreeItemDragOverAdorner(header, yPercentage);
 
       }
 
@@ -168,6 +174,8 @@ namespace MVVM_Utilities
       var tvi = sender as TreeViewItem;
       var ti = tvi.DataContext as TreeItem;
       Debug.WriteLine($"PreviewDragEnter {ti.Data}");
+
+      // das TreeItem ggf. zum automatischen Aufklappen vorsehen
       if (ti != treeItemToExpandAfterDelay)
       {
         delayTimer.Stop();
@@ -236,7 +244,7 @@ namespace MVVM_Utilities
       Debug.WriteLine("TVI DragLeave");
     }
 
-
+    // ScrollViewer aus Template des TreeViews ermitteln
     private ScrollViewer TVScrollViewer => _tv_.Template.FindName("_tv_scrollviewer_", _tv_) as ScrollViewer;
 
   

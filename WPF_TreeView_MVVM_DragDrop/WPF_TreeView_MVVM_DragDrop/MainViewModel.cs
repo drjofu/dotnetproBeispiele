@@ -38,44 +38,45 @@ namespace WpfTreeViewBeispiel
       // Pfad bei Bedarf anpassen
       var path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.Parent.FullName;
 
-      FillTree(Tree1, path,0);
-      FillTree(Tree2, path,0);
+      FillTree(Tree1, path, 0);
+      FillTree(Tree2, path, 0);
 
       ExpandAllCommand = new ActionCommand(() => Tree1.ExpandOrCollapseAll(true));
       CollapseAllCommand = new ActionCommand(() => Tree1.ExpandOrCollapseAll(false));
       OpenAppXamlCommand = new ActionCommand(OpenAppXaml);
 
 
-      DragDropControllerTV1 = new DragDropController() { CanDrag = CanDragTV1, CanDrop=CanDropTV1, Drop=DropTV1 };
+      DragDropControllerTV1 = new DragDropController() { CanDrag = CanDragTV1, CanDrop = CanDropTV1, Drop = DropTV1 };
     }
 
-    private bool DropTV1(object draggedObject, TreeItem target, double verticalPercentage)
+    private bool DropTV1(object draggedObject, TreeItem dropTarget, double verticalPercentage)
     {
       var source = draggedObject as TreeItem;
+      if (source == null) return false;
 
-      // Knoten soll nicht auf sich selbst gezogen werden
-      if (draggedObject == target) return false;
+      // Sicherstellen, dass das gezogene Item nicht auf sich selbst oder ein Unterelement gezogen wird
+      if (dropTarget.IsAncestorOfOrEqualTo(draggedObject)) return false;
 
-      // Anwendungsspezifische Aktion
+      // Anwendungsspezifische Aktionen
       source.Parent.Items.Remove(source);
       if (verticalPercentage < 20)
       {
         // davor einfügen
-        var parentList = target.Parent.Items;
-        var pos = parentList.IndexOf(target);
+        var parentList = dropTarget.Parent.Items;
+        var pos = parentList.IndexOf(dropTarget);
         parentList.Insert(pos, source);
       }
-      else if (verticalPercentage>80)
+      else if (verticalPercentage > 80)
       {
         // dahinter einfügen
-        var parentList = target.Parent.Items;
-        var pos = parentList.IndexOf(target);
-        parentList.Insert(pos+1, source);
+        var parentList = dropTarget.Parent.Items;
+        var pos = parentList.IndexOf(dropTarget);
+        parentList.Insert(pos + 1, source);
       }
       else
       {
         // als Unterelement einfügen
-        target.Items.Add(source);
+        dropTarget.Items.Add(source);
       }
       return true;
     }
@@ -84,9 +85,15 @@ namespace WpfTreeViewBeispiel
     {
       Debug.WriteLine($"CanDropTV1 y:{verticalPercentage}");
 
-      if (dropTarget == draggedObject) return DragDropEffects.None;
+      // Sicherstellen, dass das gezogene Item nicht auf sich selbst oder ein Unterelement gezogen wird
+      if (dropTarget.IsAncestorOfOrEqualTo(draggedObject)) return DragDropEffects.None;
+
+      // Geht es überhaupt um eines unserer Datenobjekte?
       var data = dropTarget.Data as DataObjectBase;
       if (data == null) return DragDropEffects.None;
+      if (!(draggedObject is TreeItem)) return DragDropEffects.None;
+
+      // anwendungsspezifische Kriterien prüfen, Rückgabe der erlaubten Effekte
       return data.Caption.StartsWith(".") ? DragDropEffects.None : DragDropEffects.Move;
     }
 
@@ -94,6 +101,8 @@ namespace WpfTreeViewBeispiel
     {
       var data = itemToDrag.Data as DataObjectBase;
       if (data == null) return false;
+
+      // anwendungsspezifische Kriterien prüfen, Rückgabe von true, wenn Drag erlaubt ist
       var startsWithPoint = data.Caption.StartsWith(".");
       return !startsWithPoint;
     }
@@ -106,14 +115,14 @@ namespace WpfTreeViewBeispiel
       {
         foreach (var dir in Directory.EnumerateDirectories(directory))
         {
-          var ti = new TreeItem { Data = new DirectoryDataObject { Caption = Path.GetFileName(dir), Level=level }, ToolTip = dir, IsEnabled= Path.GetFileName(dir) != "obj" };
+          var ti = new TreeItem { Data = new DirectoryDataObject { Caption = Path.GetFileName(dir), Level = level }, ToolTip = dir, IsEnabled = Path.GetFileName(dir) != "obj" };
           tree.Add(ti);
-          FillTree(ti.Items, dir, level+1);
+          FillTree(ti.Items, dir, level + 1);
         }
 
         foreach (var file in Directory.EnumerateFiles(directory))
         {
-          var ti = new TreeItem { Data = new FileDataObject { Caption = Path.GetFileName(file), Level=level }, ToolTip = file };
+          var ti = new TreeItem { Data = new FileDataObject { Caption = Path.GetFileName(file), Level = level }, ToolTip = file };
           ti.IsSelectedChanged += Ti_IsSelectedChanged;
           tree.Add(ti);
         }

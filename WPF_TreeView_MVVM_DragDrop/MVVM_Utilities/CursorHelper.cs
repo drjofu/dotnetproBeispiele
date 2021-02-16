@@ -87,27 +87,31 @@ namespace MVVM_Utilities
       cc.Height = dragElement.ActualHeight;
       cc.Width = dragElement.ActualWidth;
 
-      Border element = new Border();
-      element.Child = cc;
-      element.BorderBrush = Brushes.Black;
-      element.BorderThickness = new Thickness(1);
-      element.Padding = new Thickness(2);
-      element.Background = new SolidColorBrush(Color.FromArgb(230,190,230,230));
-      
-      element.Visibility = Visibility.Visible;
-      element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-      var offset = new Point(0, 0);
-      element.Arrange(new Rect(offset, element.DesiredSize));
+      // Einstellungen für Rahmen
+      Border border = new Border();
+      border.Child = cc;
+      border.BorderBrush = Brushes.Black;
+      border.BorderThickness = new Thickness(1);
+      border.Padding = new Thickness(2);
+      border.Background = new SolidColorBrush(Color.FromArgb(230, 190, 230, 230));
+
+      // Größe anpassen
+      border.LayoutTransform = new ScaleTransform(0.8, 0.8);
+
+      border.Visibility = Visibility.Visible;
+      border.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+      var offset = new Point(0, 0);  // Offset zum Mauszeiger, falls gewünscht
+      border.Arrange(new Rect(offset, border.DesiredSize));
 
       RenderTargetBitmap rtb =
         new RenderTargetBitmap(
-          (int)element.DesiredSize.Width+(int)offset.X,
-          (int)element.DesiredSize.Height+(int)offset.Y,
+          (int)border.DesiredSize.Width + (int)offset.X,
+          (int)border.DesiredSize.Height + (int)offset.Y,
           96, 96, PixelFormats.Pbgra32);
 
-      rtb.Render(element);
+      rtb.Render(border);
 
-     
+
       var encoder = new PngBitmapEncoder();
       encoder.Frames.Add(BitmapFrame.Create(rtb));
 
@@ -121,6 +125,6 @@ namespace MVVM_Utilities
       }
     }
 
-     
+
   }
 }

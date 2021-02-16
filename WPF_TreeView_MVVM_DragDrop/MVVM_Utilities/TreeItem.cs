@@ -94,6 +94,22 @@ namespace MVVM_Utilities
       }
     }
 
+    /// <summary>
+    /// Prüfen, ob ein übergebenes Objekt mit dem aktuellen TreeItem identisch ist
+    /// oder ein Nachfolger dessen ist
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public bool IsAncestorOfOrEqualTo(object other)
+    {
+      // Identität?
+      if (other == this) return true;
 
+      // Parent vorhanden? Nein -> this ist kein Nachfolger von other
+      if (this.Parent == null) return false;
+
+      // Rekursiv nach oben prüfen
+      return this.Parent.IsAncestorOfOrEqualTo(other);
+    }
   }
 }
