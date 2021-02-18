@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "Services.Protos";
+
+package tankstellen;
+
+message Tankstelle{
+	string name=1;
+	double super=2;
+	double diesel=3;
+}
+
+message TankstellenpreiseRequest{
+	int32 anzahl=1;
+}
+
+message Tankstellen{
+	repeated Tankstelle liste=1;
+}
+
+service TankstellenGrpc{
+	rpc Tankstellenpreise(TankstellenpreiseRequest)returns (stream Tankstellen);
+}
+
