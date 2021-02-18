@@ -101,7 +101,7 @@ namespace MVVM_Utilities
         ScrollDownBtn.Visibility = Visibility.Visible;
 
         // DoDragDrop kehrt erst nach Abschluss der Aktion wieder zurück
-        DragDrop.DoDragDrop(tvi, tvi.DataContext, DragDropEffects.All);
+        DragDrop.DoDragDrop(tvi, ti, DragDropEffects.All);
 
         // fertig
         ScrollUpBtn.Visibility = Visibility.Collapsed;
