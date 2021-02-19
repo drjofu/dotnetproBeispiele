@@ -138,7 +138,7 @@ namespace WpfClient
       var client = new Services.Protos.TankstellenGrpc.TankstellenGrpcClient(channel);
 
       // Aufruf einrichten, Cancellation-Token für möglichen Abbruch übergeben
-      var asyncStreamCall = client.Tankstellenpreise(new() { Anzahl = 50 }, cancellationToken: tankstellenabfrageGrpcCancellationTokenSource.Token);
+      var asyncStreamCall = client.Tankstellenpreise(new() { Anzahl = 10 }, cancellationToken: tankstellenabfrageGrpcCancellationTokenSource.Token);
 
       // kontinuierlich aus dem Stream Daten entgegennehmen
       var stream = asyncStreamCall.ResponseStream;

@@ -16,8 +16,9 @@ namespace Services.Models
 
     /// <summary>
     /// Observable informiert über Änderungen der Tankstellenpreise
+    /// 1 Datensatz wird vorgehalten
     /// </summary>
-    public ReplaySubject<List<Tankstelle>> Tankstellen { get; set; } = new(3);
+    public ReplaySubject<List<Tankstelle>> Tankstellen { get; set; } = new(1);
 
     // Hub wird über Dependency Injection bereit gestellt
     public Tankstellenverwaltung()

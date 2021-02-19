@@ -43,7 +43,7 @@ namespace Services.GrpcServices
       int count = request.Anzahl;
 
       // Subscription auf das Observable der Tankstellenverwaltung
-      var subscription = tankstellenverwaltung.Tankstellen.Subscribe(async liste =>
+      using (tankstellenverwaltung.Tankstellen.Subscribe(async liste =>
       {
         try
         {
@@ -72,13 +72,13 @@ namespace Services.GrpcServices
           // Kontrollierter Abbruch der Methode
           taskCompletionSource.SetResult();
         }
-      });
+      })) 
 
       // Auf die Fertigstellung der Aufgabe bzw. deren Abbruch warten
       await taskCompletionSource.Task;
 
       // Subscription beenden
-      subscription.Dispose();
+      //subscription.Dispose();
 
     }
 

@@ -11,5 +11,6 @@ namespace Services.Hubs
   /// </summary>
   public class TankstellenHub : Hub
   {
+
   }
 }

@@ -4,20 +4,24 @@ option csharp_namespace = "Services.Protos";
 
 package tankstellen;
 
+// Format der Datenobjekte
 message Tankstelle{
 	string name=1;
 	double super=2;
 	double diesel=3;
 }
 
+// Parameter der Anfrage
 message TankstellenpreiseRequest{
 	int32 anzahl=1;
 }
 
+// Format der Tankstellenliste
 message Tankstellen{
 	repeated Tankstelle liste=1;
 }
 
+// Der Service hat nur eine Stream-basierte Methode
 service TankstellenGrpc{
 	rpc Tankstellenpreise(TankstellenpreiseRequest)returns (stream Tankstellen);
 }
