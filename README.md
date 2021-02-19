@@ -1,5 +1,9 @@
 # dotnetpro-Beispiele
 
+## Hangfire
+### Heft 3 / 2021
+Client- und Server-Implementierungen beim Einsatz von Hangfire voneinander trennen
+
 ## HostedWpfApplication
 ### Heft 10 / 2020
 WPF-Anwendung in Core 3.1 mit Dependency Injection, Konfiguration, Logging...
