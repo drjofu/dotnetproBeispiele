@@ -1,10 +1,11 @@
 # dotnetpro-Beispiele
 
+## HostedWpfApplication
+### Heft 10 / 2020
+WPF-Anwendung in Core 3.1 mit Dependency Injection, Konfiguration, Logging...
+
 ## StrokeAnimationWpf
 Animierte gestrichelte Linien in WPF
-
-## HostedWpfApplication
-WPF-Anwendung in Core 3.1 mit Dependency Injection, Konfiguration, Logging...
 
 ## WpfGlobalisierung
 Sprachumschaltung in WPF-Anwendungen
