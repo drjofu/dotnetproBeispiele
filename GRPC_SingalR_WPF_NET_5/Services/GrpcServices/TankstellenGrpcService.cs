@@ -12,7 +12,7 @@ namespace Services.GrpcServices
   /// <summary>
   /// Implementierung des gRPC-Services
   /// </summary>
-  public class TankstellenGrpcService: TankstellenGrpcBase
+  public class TankstellenGrpcService : TankstellenGrpcBase
   {
     // Singleton der Tankstellenverwaltung
     private readonly Tankstellenverwaltung tankstellenverwaltung;
@@ -72,13 +72,14 @@ namespace Services.GrpcServices
           // Kontrollierter Abbruch der Methode
           taskCompletionSource.SetResult();
         }
-      })) 
+      }))
 
-      // Auf die Fertigstellung der Aufgabe bzw. deren Abbruch warten
-      await taskCompletionSource.Task;
+      {
+        // Auf die Fertigstellung der Aufgabe bzw. deren Abbruch warten
+        await taskCompletionSource.Task;
 
-      // Subscription beenden
-      //subscription.Dispose();
+        // Subscription wird mit Verlassen des Blocks beendet
+      }
 
     }
 
