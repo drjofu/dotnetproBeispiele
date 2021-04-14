@@ -64,10 +64,32 @@ namespace DependencyInjectionBeispiel
 
   public class D
   {
+    private readonly IB b;
+
     public D(IB b)
+    {
+      this.b = b;
+    }
+    public void Ausgeben()
     {
       Console.WriteLine("ctor D");
       b.MachWas();
+    }
+  }
+
+  public interface IE { void Print(); }
+  public class E : IE
+  {
+    private readonly D d;
+
+    public E(D d)
+    {
+      this.d = d;
+    }
+    public void Print()
+    {
+      Console.WriteLine("Print E");
+      d.Ausgeben();
     }
   }
 }
