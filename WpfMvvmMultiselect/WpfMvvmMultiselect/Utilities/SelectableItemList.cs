@@ -28,9 +28,9 @@ namespace WpfMvvmMultiselect.Utilities
       return list;
     }
 
-    private  void Si_IsSelectedChanged(object sender, EventArgs e)
+    private void Si_IsSelectedChanged(object sender, EventArgs e)
     {
-      base.OnPropertyChanged( new PropertyChangedEventArgs(nameof(SelectedItems)));
+      base.OnPropertyChanged(new PropertyChangedEventArgs(nameof(SelectedItems)));
     }
 
     protected override void InsertItem(int index, SelectableItem item)
@@ -47,18 +47,18 @@ namespace WpfMvvmMultiselect.Utilities
       base.RemoveItem(index);
     }
 
-        protected override void ClearItems()
-        {
-            foreach (var selectableItem in this)
-            {
-                selectableItem.IsSelectedChanged -= Si_IsSelectedChanged;
-            }
-            base.ClearItems();
-        }
+    protected override void ClearItems()
+    {
+      foreach (var selectableItem in this)
+      {
+        selectableItem.IsSelectedChanged -= Si_IsSelectedChanged;
+      }
+      base.ClearItems();
+    }
 
-        /// <summary>
-        /// Ausgewählte Elemente
-        /// </summary>
-        public IEnumerable<SelectableItem> SelectedItems => this.Where(i => i.IsSelected).ToList();
+    /// <summary>
+    /// Ausgewählte Elemente
+    /// </summary>
+    public IEnumerable<SelectableItem> SelectedItems => this.Where(i => i.IsSelected).ToList();
   }
 }
