@@ -43,13 +43,22 @@ namespace WpfMvvmMultiselect.Utilities
     protected override void RemoveItem(int index)
     {
       // Handler wieder entfernen
-      this[index].IsSelectedChanged += Si_IsSelectedChanged;
+      this[index].IsSelectedChanged -= Si_IsSelectedChanged;
       base.RemoveItem(index);
     }
 
-    /// <summary>
-    /// Ausgewählte Elemente
-    /// </summary>
-    public IEnumerable<SelectableItem> SelectedItems => this.Where(i => i.IsSelected).ToList();
+        protected override void ClearItems()
+        {
+            foreach (var selectableItem in this)
+            {
+                selectableItem.IsSelectedChanged -= Si_IsSelectedChanged;
+            }
+            base.ClearItems();
+        }
+
+        /// <summary>
+        /// Ausgewählte Elemente
+        /// </summary>
+        public IEnumerable<SelectableItem> SelectedItems => this.Where(i => i.IsSelected).ToList();
   }
 }
