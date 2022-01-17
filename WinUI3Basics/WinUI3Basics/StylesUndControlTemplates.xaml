@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="WinUI3Basics.StylesUndControlTemplates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3Basics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Page.Resources>
+    <Style TargetType="TextBlock" x:Key="Stil1">
+      <Setter Property="Foreground" Value="Red" />
+      <Setter Property="FontSize" Value="25" />
+    </Style>
+    <Style TargetType="TextBlock" x:Key="Stil2" BasedOn="{StaticResource Stil1}">
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="Foreground" Value="Blue" />
+    </Style>
+    <Style TargetType="TextBlock" BasedOn="{StaticResource Stil2}">
+      <Setter Property="Foreground" Value="Orange" />
+      <Setter Property="FontFamily" Value="Wingdings" />
+    </Style>
+    <ControlTemplate TargetType="Button" x:Key="ButtonTemplate">
+      <StackPanel Orientation="Horizontal">
+        <Ellipse Width="50" Height="50" Fill="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"/>
+        <ContentPresenter VerticalAlignment="Center" Margin="10,0"/>
+        <Ellipse Width="50" Height="50" Fill="{TemplateBinding Background}"/>
+      </StackPanel>
+    </ControlTemplate>
+    <Style TargetType="Button">
+      <Setter Property="Template" Value="{StaticResource ButtonTemplate}" />
+    </Style>
+  </Page.Resources>
+
+  <StackPanel>
+    <TextBlock Text="Hallo" Margin="5" Style="{StaticResource Stil1}"/>
+    <TextBlock Text="Hallo" Margin="5" Style="{StaticResource Stil2}"/>
+    <TextBlock Text="Hallo" Margin="5" />
+    <TextBlock Text="Hallo" Margin="5"/>
+    <Button Template="{StaticResource ButtonTemplate}" Click="Button_Click" Content="Interssanter Inhalt" Foreground="NavajoWhite" Background="DarkOrange"/>
+    <Button Content="Interssanter Inhalt 2" Click="Button_Click"  Foreground="Green" Background="LightCyan"/>
+    <Button Content="Interssanter Inhalt 3" Click="Button_Click"  Foreground="Pink" Background="DarkMagenta"/>
+  </StackPanel>
+</Page>

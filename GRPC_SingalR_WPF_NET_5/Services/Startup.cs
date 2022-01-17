@@ -18,13 +18,13 @@ namespace Services
       // Tankstellenverwaltung als Singleton anlegen
       services.AddSingleton<Tankstellenverwaltung>();
 
-      // Hosted Service, um Änderungen über SignalR bekannt zu machen
+      // Hosted Service, um ï¿½nderungen ï¿½ber SignalR bekannt zu machen
       services.AddHostedService<TankstellenSignalRHostedService>();
 
-      // Dienste für SignalR bereitstellen
+      // Dienste fï¿½r SignalR bereitstellen
       services.AddSignalR();
 
-      // Dienste für gRPC bereit stellen
+      // Dienste fï¿½r gRPC bereit stellen
       services.AddGrpc();
 
     }
@@ -41,10 +41,10 @@ namespace Services
 
       app.UseEndpoints(endpoints =>
       {
-        // Endpunkt für SignalR-Service
+        // Endpunkt fï¿½r SignalR-Service
         endpoints.MapHub<TankstellenHub>("/tankstellen");
 
-        // Endpunkt für gRPC-Service
+        // Endpunkt fï¿½r gRPC-Service
         endpoints.MapGrpcService<TankstellenGrpcService>();
 
         endpoints.MapGet("/", async context =>
