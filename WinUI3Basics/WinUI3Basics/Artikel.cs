@@ -1,12 +1,6 @@
-﻿using Microsoft.UI.Xaml;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WinUI3Basics
 {
@@ -47,7 +41,11 @@ namespace WinUI3Basics
       new Artikel { Artikelnummer = 18, Bezeichnung = "Teller", Preis = 7 }
     };
 
-    public void ArtikelHinzufuegen(object sender, RoutedEventArgs e)
+    // Event-Handler, über {x:Bind} gebunden:
+    // mit Parametern:
+    // public void ArtikelHinzufuegen(object sender, RoutedEventArgs e)
+    // oder ohne:
+    public void ArtikelHinzufuegen()
     {
       Artikel.Add(new Artikel { Artikelnummer=42, Bezeichnung="was neues", Preis=10 });
     }

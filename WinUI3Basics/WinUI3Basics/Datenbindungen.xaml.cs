@@ -23,16 +23,17 @@ namespace WinUI3Basics
   /// </summary>
   public sealed partial class Datenbindungen : Page
   {
+    // Property für den typisierten Zugriff auf die Daten
     public Laden DerLaden { get; set; }
 
     public Datenbindungen()
     {
       this.InitializeComponent();
+
       DerLaden= new Laden();
+
+      // Setzen des DataContexts für klassische Datenbindungen
       this.DataContext = DerLaden;
-
     }
-
-
   }
 }
