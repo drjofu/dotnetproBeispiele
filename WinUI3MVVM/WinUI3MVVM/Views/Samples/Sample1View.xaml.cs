@@ -10,11 +10,11 @@ namespace WinUI3MVVM.Views;
 /// </summary>
 public sealed partial class Sample1View : Page
 {
-    public Sample1ViewModel ViewModel { get; set; }
+  public Sample1ViewModel ViewModel { get; set; }
 
-    public Sample1View()
-    {
-        this.InitializeComponent();
-        ViewModel = this.SetupViewModel<Sample1ViewModel>();
-    }
+  public Sample1View()
+  {
+    this.InitializeComponent();
+    ViewModel = this.SetupViewModel<Sample1ViewModel>();
+  }
 }
