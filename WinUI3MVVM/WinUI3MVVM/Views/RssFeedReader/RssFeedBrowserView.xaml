@@ -1,0 +1,15 @@
+﻿<Page
+    x:Class="WinUI3MVVM.Views.RssFeedBrowserView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Grid>
+    <WebView2 Source="{x:Bind ViewModel.FeedReader.SelectedItem.WebsiteUrl}"  
+              VerticalAlignment="Stretch"/>
+
+  </Grid>
+</Page>

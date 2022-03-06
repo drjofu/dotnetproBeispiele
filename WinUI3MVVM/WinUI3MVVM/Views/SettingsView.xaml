@@ -1,0 +1,46 @@
+﻿<Page 
+    x:Class="WinUI3MVVM.Views.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3MVVM.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Grid >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Grid.Resources>
+      <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
+    </Grid.Resources>
+
+    <ToggleSwitch Header="Audible feedback" IsOn="{x:Bind ViewModel.IsAudioOn,Mode=TwoWay}" OffContent="Off" OnContent="On" />
+    <ToggleSwitch Header="Spacial audio" IsOn="{x:Bind ViewModel.IsAudioSpacial, Mode=TwoWay}" 
+                  OffContent="Off" OnContent="On" Grid.Column="1"/>
+
+    <TextBlock Grid.Row="1" Text="Version:" Grid.Column="0"/>
+    <TextBlock Grid.Row="1" Text="{x:Bind ViewModel.Version}" Grid.Column="1"/>
+
+    <CheckBox Content="Light Theme" IsChecked="{x:Bind ViewModel.LightThemeSelected, Mode=TwoWay}" Grid.Row="2" />
+    <ComboBox ItemsSource="{x:Bind ViewModel.Cultures}" DisplayMemberPath="DisplayName" SelectedItem="{x:Bind ViewModel.SelectedCulture, Mode=TwoWay}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+    <TextBlock Text="Path to mondial.xml" Grid.Row="4" VerticalAlignment="Center"/>
+    <TextBox Text="{x:Bind ViewModel.PathMondial, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="6" VerticalAlignment="Center"/>
+
+  </Grid>
+</Page>

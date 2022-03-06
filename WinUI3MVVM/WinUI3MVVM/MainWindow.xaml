@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="WinUI3MVVM.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3MVVM"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:media="using:Microsoft.UI.Xaml.Media"
+    xmlns:vh="using:WinUI3MVVM.ViewHelper"
+
+    mc:Ignorable="d">
+
+    <Page>
+        <Page.Resources>
+            <DataTemplate x:Key="NVHT">
+                <Grid Height="100" Margin="0,0,10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Background>
+                        <ImageBrush ImageSource="/Assets/IMG_8977.jpg" Stretch="UniformToFill" Opacity="0.4"/>
+                    </Grid.Background>
+                    <Grid Margin="20">
+                        <Grid.Background>
+                            <media:AcrylicBrush TintColor="LightBlue" TintLuminosityOpacity="0.5" TintOpacity="0.2"/>
+                        </Grid.Background>
+                        <TextBlock Text="{Binding  Mode=OneWay}" VerticalAlignment="Center" MinWidth="300" Margin="30,0" FontSize="30" FontWeight="Bold" />
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </Page.Resources>
+
+        <NavigationView MenuItemsSource="{x:Bind ViewModel.MenuItems}" 
+                    IsBackEnabled="{x:Bind contentFrame.CanGoBack, Mode=OneWay}" 
+                    BackRequested="BackRequested" 
+                    HeaderTemplate="{StaticResource NVHT}"
+                    ItemInvoked="{x:Bind ViewModel.MenuItemInvoked}" 
+                    Name="nvMain" 
+                    Header="*** Header" PaneTitle="WinUI 3 Beispiel">
+            <NavigationView.MenuItemTemplate>
+                <DataTemplate x:DataType="vh:PageTypeTreeItem">
+                    <NavigationViewItem Content="{Binding Title}" Tag="{Binding}" 
+                              MenuItemsSource="{Binding Children}" Icon="{Binding Icon}"/>
+                </DataTemplate>
+            </NavigationView.MenuItemTemplate>
+            <Frame Name="contentFrame" Navigated="OnRootFrameNavigated" Navigating="OnRootFrameNavigating" Margin="10">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition >
+                            <SlideNavigationTransitionInfo Effect="FromRight"  />
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+
+            </Frame>
+        </NavigationView>
+    </Page>
+</Window>
