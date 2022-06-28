@@ -9,13 +9,13 @@ namespace WinUI3MVVM.ViewHelper;
 /// </summary>
 public class RssFeedTemplateSelector : DataTemplateSelector
 {
-    public DataTemplate CategoryTemplate { get; set; }
-    public DataTemplate NewsItemTemplate { get; set; }
+  public DataTemplate CategoryTemplate { get; set; }
+  public DataTemplate NewsItemTemplate { get; set; }
 
-    protected override DataTemplate SelectTemplateCore(object item)
-    {
-        if (item is NewsItem)
-            return NewsItemTemplate;
-        return CategoryTemplate;
-    }
+  protected override DataTemplate SelectTemplateCore(object item)
+  {
+    if (item is NewsItem)
+      return NewsItemTemplate;
+    return CategoryTemplate;
+  }
 }

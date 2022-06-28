@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SOLAR_SYSTEM>
+  <PLANETS>
+
+    <PLANET color="orange">
+      <name>Mercury</name>
+      <distance units="km">57.91</distance>
+      <radius units="km">2340</radius>
+      <length_of_year>0.24085</length_of_year>
+      <day units="days">88</day>
+      <mass units="(Earth=1)">0.054</mass>
+      <density units="gm/cm">6.03</density>
+    </PLANET>
+
+
+    <PLANET color="white">
+      <name>Venus</name>
+      <distance units="km">108.21</distance>
+      <radius units="km">6100</radius>
+      <length_of_year>0.61521</length_of_year>
+      <day units="days">230</day>
+      <mass units="(Earth=1)">0.814</mass>
+      <density units="gm/cm">5.11</density>
+    </PLANET>
+
+
+    <PLANET color="blue">
+      <name>Earth</name>
+      <distance units="km">149.60</distance>
+      <radius units="km">6371</radius>
+      <length_of_year>1.000039</length_of_year>
+      <day units="hours">24</day>
+      <mass units="(Earth=1)">1.00</mass>
+      <density units="gm/cm">5.517</density>
+      <satellites>
+        <satellite>
+          <name>Moon</name>
+          <distance_from_planet>384405</distance_from_planet>
+          <orbit units="days">27.322</orbit>
+        </satellite>
+      </satellites>
+    </PLANET>
+
+
+    <PLANET color="red">
+      <name>Mars</name>
+      <distance units="km">227.9</distance>
+      <radius units="km">3324</radius>
+      <length_of_year>1.88089</length_of_year>
+      <day units="hours">24.5</day>
+      <mass units="(Earth=1)">0.107</mass>
+      <density units="gm/cm">4.16</density>
+      <satellites>
+        <satellite>
+          <name>Phobos</name>
+          <distance_from_planet>9380</distance_from_planet>
+          <orbit units="days">0.319</orbit>
+        </satellite>
+
+        <satellite>
+          <name>Deimos</name>
+          <distance_from_planet>23500</distance_from_planet>
+          <orbit units="days">1.262</orbit>
+        </satellite>
+
+      </satellites>
+    </PLANET>
+
+
+    <PLANET color="yellow">
+      <name>Jupiter</name>
+      <distance units="km">778.3</distance>
+      <radius units="km">69750</radius>
+      <length_of_year>11.8653</length_of_year>
+      <day units="hours">9.8</day>
+      <mass units="(Earth=1)">317.4</mass>
+      <density units="gm/cm">1.34</density>
+      <satellites>
+        <satellite>
+          <name>III Ganymede</name>
+          <distance_from_planet>1070000</distance_from_planet>
+          <orbit units="days">7.155</orbit>
+        </satellite>
+
+        <satellite>
+          <name>IV Callisto</name>
+          <distance_from_planet>1882000</distance_from_planet>
+          <orbit units="days">16.689</orbit>
+        </satellite>
+
+      </satellites>
+    </PLANET>
+
+
+    <PLANET color="yellow">
+      <name>Saturn</name>
+      <distance units="km">1428</distance>
+      <radius units="km">58170</radius>
+      <length_of_year>29.6501</length_of_year>
+      <day units="hours">10.2</day>
+      <mass units="(Earth=1)">95.0</mass>
+      <density units="gm/cm">0.68</density>
+      <satellites>
+        <satellite>
+          <name>Titan</name>
+          <distance_from_planet>1221000</distance_from_planet>
+          <orbit units="days">15.945</orbit>
+        </satellite>
+
+        <satellite>
+          <name>Rhea</name>
+          <distance_from_planet>526700</distance_from_planet>
+          <orbit units="days">4.518</orbit>
+        </satellite>
+
+      </satellites>
+    </PLANET>
+
+
+    <PLANET color="yellow">
+      <name>Uranus</name>
+      <distance units="km">2872</distance>
+      <radius units="km">23750</radius>
+      <length_of_year>83.7445</length_of_year>
+      <day units="hours">10.7</day>
+      <mass units="(Earth=1)">14.5</mass>
+      <density units="gm/cm">1.55</density>
+      <satellites>
+        <satellite>
+          <name>Ariel</name>
+          <distance_from_planet>191700</distance_from_planet>
+          <orbit units="days">2.520</orbit>
+        </satellite>
+
+        <satellite>
+          <name>Miranda</name>
+          <distance_from_planet>1234000</distance_from_planet>
+          <orbit units="days">1.414</orbit>
+        </satellite>
+      </satellites>
+    </PLANET>
+
+
+    <PLANET color="purple">
+      <name>Neptune</name>
+      <distance units="km">4498</distance>
+      <radius units="km">22400</radius>
+      <length_of_year>165.951</length_of_year>
+      <day units="hours">12.7</day>
+      <mass units="(Earth=1)">17.6</mass>
+      <density units="gm/cm">2.23</density>
+      <satellites>
+        <satellite>
+          <name>Triton</name>
+          <distance_from_planet>353400</distance_from_planet>
+          <orbit units="days">5.877</orbit>
+        </satellite>
+
+      </satellites>
+    </PLANET>
+
+
+    <PLANET color="gray">
+      <name>Pluto</name>
+      <distance units="km">5910</distance>
+      <radius units="km">3000</radius>
+      <length_of_year>247.687</length_of_year>
+      <day units="days">6.39</day>
+      <mass units="(Earth=1)">0.2</mass>
+      <density units="gm/cm">5.2</density>
+    </PLANET>
+
+
+  </PLANETS>
+
+</SOLAR_SYSTEM>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WinUI3MVVM.Models.NewsFeed">
+    <Position X="5.5" Y="6.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgCEAAAAAAAAAAAAAAAAQACAAAAAAAAAA=</HashCode>
+      <FileName>Models\NewsFeed.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Items" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="WinUI3MVVM.Models.NewsItem">
+    <Position X="5.25" Y="3.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAQAAAAAAAAEAACAAAAAAQAAAAAAEAAAAAAAAACAA=</HashCode>
+      <FileName>Models\NewsItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinUI3MVVM.Models.RssFeedReader">
+    <Position X="2" Y="6" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="WinUI3MVVM.Utilities.NotificationObject" FixedToPoint="true">
+      <Path>
+        <Point X="3.375" Y="4.805" />
+        <Point X="3.375" Y="5.625" />
+        <Point X="3.688" Y="5.625" />
+        <Point X="3.688" Y="6" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAIAAACKAEAACABQAAAAEAAACBAAAAAwAAA=</HashCode>
+      <FileName>Models\RssFeedReader.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="NewsFeed" />
+      <Property Name="SelectedItem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WinUI3MVVM.ViewModels.RssFeedReaderViewModel">
+    <Position X="1.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAACIAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RssFeedReaderViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="FeedReader" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="WinUI3MVVM.ViewModels.ViewModelBase">
+    <Position X="5.75" Y="0.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <InheritanceLine Type="WinUI3MVVM.Utilities.NotificationObject" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.5" />
+        <Point X="4.625" Y="3.5" />
+        <Point X="4.625" Y="2.625" />
+        <Point X="5.75" Y="2.625" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAQECAAAAAAACAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinUI3MVVM.Utilities.NotificationObject">
+    <Position X="2.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\NotificationObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

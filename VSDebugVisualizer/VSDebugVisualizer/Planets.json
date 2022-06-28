@@ -1,0 +1,317 @@
+[
+  {
+    "color": "orange",
+    "name": "Mercury",
+    "distance": {
+      "units": "km",
+      "value": "57.91"
+    },
+    "radius": {
+      "units": "km",
+      "value": "2340"
+    },
+    "length_of_year": "0.24085",
+    "day": {
+      "units": "days",
+      "value": "88"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "0.054"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "6.03"
+    }
+  },
+  {
+    "color": "white",
+    "name": "Venus",
+    "distance": {
+      "units": "km",
+      "value": "108.21"
+    },
+    "radius": {
+      "units": "km",
+      "value": "6100"
+    },
+    "length_of_year": "0.61521",
+    "day": {
+      "units": "days",
+      "value": "230"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "0.814"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "5.11"
+    }
+  },
+  {
+    "color": "blue",
+    "name": "Earth",
+    "distance": {
+      "units": "km",
+      "value": "149.60"
+    },
+    "radius": {
+      "units": "km",
+      "value": "6371"
+    },
+    "length_of_year": "1.000039",
+    "day": {
+      "units": "hours",
+      "value": "24"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "1.00"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "5.517"
+    },
+    "satellites": [ {
+        "name": "Moon",
+        "distance_from_planet": "384405",
+        "orbit": {
+          "units": "days",
+          "value": "27.322"
+        }
+      }
+    ]
+  },
+  {
+    "color": "red",
+    "name": "Mars",
+    "distance": {
+      "units": "km",
+      "value": "227.9"
+    },
+    "radius": {
+      "units": "km",
+      "value": "3324"
+    },
+    "length_of_year": "1.88089",
+    "day": {
+      "units": "hours",
+      "value": "24.5"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "0.107"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "4.16"
+    },
+    "satellites": [
+      {
+        "name": "Phobos",
+        "distance_from_planet": "9380",
+        "orbit": {
+          "units": "days",
+          "value": "0.319"
+        }
+      },
+      {
+        "name": "Deimos",
+        "distance_from_planet": "23500",
+        "orbit": {
+          "units": "days",
+          "value": "1.262"
+        }
+      }
+    ]
+  },
+  {
+    "color": "yellow",
+    "name": "Jupiter",
+    "distance": {
+      "units": "km",
+      "value": "778.3"
+    },
+    "radius": {
+      "units": "km",
+      "value": "69750"
+    },
+    "length_of_year": "11.8653",
+    "day": {
+      "units": "hours",
+      "value": "9.8"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "317.4"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "1.34"
+    },
+    "satellites": [
+      {
+        "name": "III Ganymede",
+        "distance_from_planet": "1070000",
+        "orbit": {
+          "units": "days",
+          "value": "7.155"
+        }
+      },
+      {
+        "name": "IV Callisto",
+        "distance_from_planet": "1882000",
+        "orbit": {
+          "units": "days",
+          "value": "16.689"
+        }
+      }
+    ]
+  },
+  {
+    "color": "yellow",
+    "name": "Saturn",
+    "distance": {
+      "units": "km",
+      "value": "1428"
+    },
+    "radius": {
+      "units": "km",
+      "value": "58170"
+    },
+    "length_of_year": "29.6501",
+    "day": {
+      "units": "hours",
+      "value": "10.2"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "95.0"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "0.68"
+    },
+    "satellites": [
+      {
+        "name": "Titan",
+        "distance_from_planet": "1221000",
+        "orbit": {
+          "units": "days",
+          "value": "15.945"
+        }
+      },
+      {
+        "name": "Rhea",
+        "distance_from_planet": "526700",
+        "orbit": {
+          "units": "days",
+          "value": "4.518"
+        }
+      }
+    ]
+  },
+  {
+    "color": "yellow",
+    "name": "Uranus",
+    "distance": {
+      "units": "km",
+      "value": "2872"
+    },
+    "radius": {
+      "units": "km",
+      "value": "23750"
+    },
+    "length_of_year": "83.7445",
+    "day": {
+      "units": "hours",
+      "value": "10.7"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "14.5"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "1.55"
+    },
+    "satellites": [
+      {
+        "name": "Ariel",
+        "distance_from_planet": "191700",
+        "orbit": {
+          "units": "days",
+          "value": "2.520"
+        }
+      },
+      {
+        "name": "Miranda",
+        "distance_from_planet": "1234000",
+        "orbit": {
+          "units": "days",
+          "value": "1.414"
+        }
+      }
+    ]
+  },
+  {
+    "color": "purple",
+    "name": "Neptune",
+    "distance": {
+      "units": "km",
+      "value": "4498"
+    },
+    "radius": {
+      "units": "km",
+      "value": "22400"
+    },
+    "length_of_year": "165.951",
+    "day": {
+      "units": "hours",
+      "value": "12.7"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "17.6"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "2.23"
+    },
+    "satellites": [ {
+        "name": "Triton",
+        "distance_from_planet": "353400",
+        "orbit": {
+          "units": "days",
+          "value": "5.877"
+        }
+      }
+    ]
+  },
+  {
+    "color": "gray",
+    "name": "Pluto",
+    "distance": {
+      "units": "km",
+      "value": "5910"
+    },
+    "radius": {
+      "units": "km",
+      "value": "3000"
+    },
+    "length_of_year": "247.687",
+    "day": {
+      "units": "days",
+      "value": "6.39"
+    },
+    "mass": {
+      "units": "(Earth=1)",
+      "value": "0.2"
+    },
+    "density": {
+      "units": "gm/cm",
+      "value": "5.2"
+    }
+  }
+]
