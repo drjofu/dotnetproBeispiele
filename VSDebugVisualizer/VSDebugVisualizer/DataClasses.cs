@@ -21,7 +21,7 @@ namespace VSDebugVisualizer
 
     public Distance distance { get; set; }
     public Radius radius { get; set; }
-    public string length_of_year { get; set; }
+    public double length_of_year { get; set; }
     public Day day { get; set; }
     public Mass mass { get; set; }
     public Density density { get; set; }
