@@ -15,6 +15,7 @@ namespace ReflectionBenchmarks
   {
     private readonly object obj = new Beispielklasse();
     private readonly Beispielklasse obj2 = new Beispielklasse();
+    private dynamic dBeispielklasse;
 
     private PropertyInfo propertyInfo1, propertyInfo2;
 
@@ -22,6 +23,7 @@ namespace ReflectionBenchmarks
     {
       obj2 = new Beispielklasse();
       obj = obj2;
+      dBeispielklasse=obj;
 
       var type = typeof(Beispielklasse);
       propertyInfo1 = type.GetProperty("Name1")!;
@@ -47,7 +49,21 @@ namespace ReflectionBenchmarks
       return (string)v!;
     }
 
+    [Benchmark( Description = "Property dynamic")]
+    public string ExchangeNamesDynamic()
+    {
+      string t = dBeispielklasse.Name1;
+      dBeispielklasse.Name1 = dBeispielklasse.Name2;
+      dBeispielklasse.Name2 = t;
+      return t;
+    }
 
+
+    [GlobalCleanup]
+    public void GlobalCleanup()
+    {
+      Console.WriteLine($"Counts: {Beispielklasse.Counter1} / {Beispielklasse.Counter2}");
+    }
 
   }
 }

@@ -17,6 +17,7 @@ namespace ReflectionBenchmarks
     private readonly Beispielklasse obj2 = new Beispielklasse();
 
     private MethodInfo? methodInfo;
+    private dynamic dBeispielklasse;
 
     private Random rnd = new Random();
 
@@ -24,6 +25,7 @@ namespace ReflectionBenchmarks
     {
       obj2 = new Beispielklasse();
       obj = obj2;
+      dBeispielklasse=obj;
 
       var type = typeof(Beispielklasse);
       methodInfo = type.GetMethod("Add");
@@ -41,6 +43,7 @@ namespace ReflectionBenchmarks
       return (int)methodInfo!.Invoke(obj, new object[] { rnd.Next(), rnd.Next() })!;
     }
 
+
     private readonly object[] numbers = { 1000, 123 };
 
     [Benchmark(Description = "Method call with constant parameters")]
@@ -48,6 +51,13 @@ namespace ReflectionBenchmarks
     {
       return methodInfo!.Invoke(obj, numbers);
     }
+
+    [Benchmark(Description = "Method call using dynamic")]
+    public int AddDynamic()
+    {
+      return dBeispielklasse.Add( rnd.Next(), rnd.Next() );
+    }
+
 
   }
 }
