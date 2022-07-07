@@ -79,6 +79,7 @@ namespace ReflectionBenchmarks
     [GlobalCleanup]
     public void GlobalCleanup()
     {
+      // Zur Kontrolle
       Console.WriteLine($"Counts: {Beispielklasse.Counter1} / {Beispielklasse.Counter2}");
     }
 
