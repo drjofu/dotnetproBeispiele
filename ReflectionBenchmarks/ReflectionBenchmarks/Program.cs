@@ -3,8 +3,9 @@
 using BenchmarkDotNet.Running;
 using ReflectionBenchmarks;
 
+
 //BenchmarkRunner.Run<BenchmarksCtor>();
 
-//BenchmarkRunner.Run<BenchmarksMethodInvoke>();
+BenchmarkRunner.Run<BenchmarksMethodInvoke>();
 
-BenchmarkRunner.Run<BenchmarksProperties>();
+//BenchmarkRunner.Run<BenchmarksProperties>();
