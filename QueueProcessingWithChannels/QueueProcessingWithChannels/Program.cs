@@ -19,17 +19,22 @@ public class Program
     AbbruchDurchBenutzerÜberwachen();
 
     var tasks = new List<Task>();
+        var tasksVerpackungsteam = new List<Task>();
 
     tasks.Add(BestellungenVerarbeiten());
 
     for (int i = 0; i < 3; i++)
     {
-      tasks.Add(VerpackungsteamStarten());
+            tasksVerpackungsteam.Add(VerpackungsteamStarten());
     }
 
     tasks.Add(PaketversandAusführen(channelVersandInland));
     tasks.Add(PaketversandAusführen(channelVersandAusland));
 
+        await Task.WhenAll(tasksVerpackungsteam);
+        channelVersandAusland.Writer.Complete();
+        channelVersandInland.Writer.Complete();
+        
     await Task.WhenAll(tasks);
 
     if (cancellationToken.IsCancellationRequested)
@@ -91,7 +96,7 @@ public class Program
 
   static async Task BestellungenVerarbeiten()
   {
-    await foreach (var bestellung in auftragseingang.GetBestellungen(30))
+    await foreach (var bestellung in auftragseingang.GetBestellungen(10))
     {
       Print($"Bestellung {bestellung.Auftragsnummer} mit {bestellung.Artikel.Count()} Artikeln nach {bestellung.Adresse.Ort}", ConsoleColor.Yellow);
 
