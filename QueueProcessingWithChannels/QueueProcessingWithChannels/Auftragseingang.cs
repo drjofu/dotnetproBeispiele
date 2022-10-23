@@ -13,7 +13,7 @@ namespace QueueProcessingWithChannels
 
   public class Auftragseingang
   {
-    private Artikel[] artikelliste = new Artikel[] {
+    private readonly Artikel[] artikelliste = new Artikel[] {
       new Artikel("Hemd",2),
       new Artikel("Geschirr",5),
       new Artikel("Bild",3),
@@ -22,10 +22,13 @@ namespace QueueProcessingWithChannels
       new Artikel("Spiegel",4)
     };
 
-    private Adresse[] adressen = new Adresse[]
+    private readonly Adresse[] adressen = new Adresse[]
     {
       new Adresse("Köln",1),
       new Adresse("München",1),
+      new Adresse("Hamburg",1),
+      new Adresse("Bremen",1),
+      new Adresse("Dresden",1),
       new Adresse("Wien",2),
       new Adresse("Brüssel",2),
       new Adresse("London",3),
@@ -36,17 +39,28 @@ namespace QueueProcessingWithChannels
       new Adresse("Edinburgh of the Seven Seas",30)
     };
 
-    public async IAsyncEnumerable<Bestellung> GetBestellungen(int anzahl, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    /// <summary>
+    /// Bestellungen generieren und als AsyncEnumerable bereitstellen
+    /// </summary>
+    /// <param name="anzahl">Anzahl der gewünschten Bestellungen</param>
+    /// <param name="cancellationToken">Abbruch-Token</param>
+    /// <returns>Bestellungen</returns>
+    public async IAsyncEnumerable<Bestellung> GetBestellungen(
+      int anzahl, 
+      [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
       int auftragsnummer = 1;
 
-
+      // Gewünschte Anzahl Bestellungen generieren
       while (anzahl > 1)
       {
         anzahl--;
         auftragsnummer++;
-        try
+
+        // try/catch nur, damit der Debugger hier nicht stoppt
+        try 
         {
+          // Abstand zwischen Bestellungseingängen simulieren
           await Task.Delay(300, cancellationToken);
         }
         catch (Exception )
@@ -55,10 +69,15 @@ namespace QueueProcessingWithChannels
           yield break;
         }
 
+        // Artikel zusammenstellen
         var n = Random.Shared.Next(1, 10);
         var artikel = new Artikel[n];
         for (int i = 0; i < n; i++) artikel[i] = artikelliste[Random.Shared.Next(artikelliste.Length)];
+
+        // Bestellung vervollständigen
         var bestellung = new Bestellung(auftragsnummer, artikel, adressen[Random.Shared.Next(adressen.Length)]);
+
+        // aktuelle Iteration abschließen
         yield return bestellung;
       }
 

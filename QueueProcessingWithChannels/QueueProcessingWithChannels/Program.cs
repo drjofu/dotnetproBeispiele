@@ -5,13 +5,20 @@ using System.Threading.Channels;
 
 public class Program
 {
-
+  // zur Zeitmessung
   static readonly Stopwatch stopwatch = Stopwatch.StartNew();
+
+  // Channel für die Auftragsbearbeitung (Verpacken)
   static readonly Channel<Bestellung> channelAuftragseingang = Channel.CreateUnbounded<Bestellung>();
+
+  // Channel für den Versand
   static readonly Channel<Bestellung> channelVersandInland = Channel.CreateBounded<Bestellung>(new BoundedChannelOptions(5) { SingleReader = true });
   static readonly Channel<Bestellung> channelVersandAusland = Channel.CreateBounded<Bestellung>(2);
 
+  // Beispieldatengenerator
   static readonly Auftragseingang auftragseingang = new();
+
+  // Token (-generator) für den Abbruch durch den Benutzer
   static CancellationTokenSource cancellationTokenSource = new();
   static CancellationToken cancellationToken = cancellationTokenSource.Token;
 
@@ -22,6 +29,7 @@ public class Program
 
   }
 
+  // Konventioneller Ansatz mit ConcurrentQueue und Semaphore
   private static void BeispielMitConcurrentQueue()
   {
     ConcurrentQueue<Bestellung> queue = new();
@@ -61,6 +69,7 @@ public class Program
     Console.ReadLine();
   }
 
+  // Ansatz mit Channels
   private static async Task BeispielMitChannels()
   {
     AbbruchDurchBenutzerÜberwachen();
