@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,15 +36,24 @@ namespace QueueProcessingWithChannels
       new Adresse("Edinburgh of the Seven Seas",30)
     };
 
-    public async IAsyncEnumerable<Bestellung> GetBestellungen(int anzahl)
+    public async IAsyncEnumerable<Bestellung> GetBestellungen(int anzahl, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
       int auftragsnummer = 1;
+
 
       while (anzahl > 1)
       {
         anzahl--;
         auftragsnummer++;
-        await Task.Delay(300);
+        try
+        {
+          await Task.Delay(300, cancellationToken);
+        }
+        catch (Exception )
+        {
+          Console.WriteLine("Bestellungsannahme abgebrochen");
+          yield break;
+        }
 
         var n = Random.Shared.Next(1, 10);
         var artikel = new Artikel[n];
@@ -51,6 +61,7 @@ namespace QueueProcessingWithChannels
         var bestellung = new Bestellung(auftragsnummer, artikel, adressen[Random.Shared.Next(adressen.Length)]);
         yield return bestellung;
       }
+
     }
   }
 }
