@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace FunWithAwaitables
 {
+  // https://www.youtube.com/watch?v=ileC_qyLdD4&list=WL&index=1
+
   public class MagicDelay
   {
     private readonly TimeSpan timeSpan;
