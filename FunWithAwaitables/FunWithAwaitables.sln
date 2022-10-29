@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunWithAwaitables", "FunWithAwaitables\FunWithAwaitables.csproj", "{0FD0C419-98D1-4985-A064-C348FDBE295B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FD0C419-98D1-4985-A064-C348FDBE295B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FD0C419-98D1-4985-A064-C348FDBE295B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FD0C419-98D1-4985-A064-C348FDBE295B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FD0C419-98D1-4985-A064-C348FDBE295B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2C730FE-29E8-441A-8ADB-1B3DCED12192}
+	EndGlobalSection
+EndGlobal
