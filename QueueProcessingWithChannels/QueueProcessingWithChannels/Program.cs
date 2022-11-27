@@ -56,9 +56,9 @@ public class Program
         await semaphoreSlim.WaitAsync();
         if(queue.TryDequeue(out var bestellung))
         {
-          Print($"Beginn Auftrag {bestellung.Auftragsnummer} verpacken", ConsoleColor.Blue);
+          Print($"Beginn Auftrag {bestellung.Auftragsnummer} verpacken", ConsoleColor.Cyan);
           await Task.Delay(bestellung.Artikel.Sum(a => a.Verpackungszeit) * 100, cancellationToken);
-          Print($"Ende Auftrag {bestellung.Auftragsnummer} verpacken", ConsoleColor.Blue);
+          Print($"Ende Auftrag {bestellung.Auftragsnummer} verpacken", ConsoleColor.Cyan);
         }
       }
 
@@ -98,35 +98,28 @@ public class Program
       Print("Alles erledigt", ConsoleColor.Green);
   }
 
-  private static async Task PaketversandAusführen(string name, Channel<Bestellung> channelVersand)
+
+  static async Task BestellungenVerarbeiten()
   {
-    try
+    Print("Bestellungen entgegennehmen", ConsoleColor.Yellow);
+    await foreach (var bestellung in auftragseingang.GetBestellungen(5, cancellationToken))
     {
-      Print($"Logistiker ({name}) bereit zum Versenden der Pakete", ConsoleColor.Cyan);
-      await foreach (var item in channelVersand.Reader.ReadAllAsync(cancellationToken))
+      Print($"Bestellung {bestellung.Auftragsnummer} mit {bestellung.Artikel.Count()} Artikeln ({string.Join(",",bestellung.Artikel.Select(a=>a.Bezeichnung))}) nach {bestellung.Adresse.Ort}", ConsoleColor.Yellow);
+
+      try
       {
-        Print($"Versand für Auftrag {item.Auftragsnummer} nach {item.Adresse.Ort} begonnen. Dauer [Tage]: {item.Adresse.Versandzeit}", ConsoleColor.Cyan);
-        await Task.Delay(item.Adresse.Versandzeit * 1000, cancellationToken);
-        Print($"Ware von Auftrag {item.Auftragsnummer} in {item.Adresse.Ort} ausgeliefert", ConsoleColor.Cyan);
+        await channelAuftragseingang.Writer.WriteAsync(bestellung, cancellationToken);
+
       }
-      Print($"Logistiker ({name}) hat alle Versandaufträge abgeschlossen", ConsoleColor.Cyan);
+      catch (TaskCanceledException)
+      {
+        Print("BestellungenVerarbeiten abgebrochen", ConsoleColor.Red);
+      }
     }
-    catch (OperationCanceledException)
-    {
-      Print("Logistiker ({name}) hat Arbeit abgebrochen", ConsoleColor.Red);
-    }
-  }
 
-  private static void AbbruchDurchBenutzerÜberwachen()
-  {
-    Task.Run(() =>
-    {
+    channelAuftragseingang.Writer.Complete();
+    Print("Alle Bestellungen entgegengenommen", ConsoleColor.Yellow);
 
-      Console.WriteLine("Zum Beenden Eingabetaste drücken");
-      Console.ReadLine();
-      Console.WriteLine("Abbruch aller Vorgänge");
-      cancellationTokenSource.Cancel();
-    });
   }
 
   static async Task VerpackungsteamStarten(string name)
@@ -148,34 +141,12 @@ public class Program
     }
   }
 
-  static async Task BestellungenVerarbeiten()
-  {
-    Print("Bestellungen entgegennehmen", ConsoleColor.Yellow);
-    await foreach (var bestellung in auftragseingang.GetBestellungen(10, cancellationToken))
-    {
-      Print($"Bestellung {bestellung.Auftragsnummer} mit {bestellung.Artikel.Count()} Artikeln ({string.Join(",",bestellung.Artikel.Select(a=>a.Bezeichnung))}) nach {bestellung.Adresse.Ort}", ConsoleColor.Yellow);
-
-      try
-      {
-        await channelAuftragseingang.Writer.WriteAsync(bestellung, cancellationToken);
-
-      }
-      catch (TaskCanceledException)
-      {
-        Print("BestellungenVerarbeiten abgebrochen", ConsoleColor.Red);
-      }
-    }
-
-    channelAuftragseingang.Writer.Complete();
-    Print("Alle Bestellungen entgegengenommen", ConsoleColor.Yellow);
-
-  }
-
   static async Task Verpacken(string teamname, Bestellung bestellung)
   {
     Print($"Verpackung von Auftrag {bestellung.Auftragsnummer} durch {teamname} begonnen", ConsoleColor.Magenta);
     await Task.Delay(bestellung.Artikel.Sum(a => a.Verpackungszeit) * 100, cancellationToken);
     Print($"Verpackung von Auftrag {bestellung.Auftragsnummer} durch {teamname} beendet, jetzt versenden", ConsoleColor.Magenta);
+ 
     if (bestellung.Adresse.Versandzeit > 1)
     {
       await channelVersandAusland.Writer.WriteAsync(bestellung, cancellationToken);
@@ -188,6 +159,26 @@ public class Program
     }
   }
 
+  private static async Task PaketversandAusführen(string name, Channel<Bestellung> channelVersand)
+  {
+    try
+    {
+      Print($"Logistiker ({name}) bereit zum Versenden der Pakete", ConsoleColor.Cyan);
+      await foreach (var item in channelVersand.Reader.ReadAllAsync(cancellationToken))
+      {
+        Print($"Versand für Auftrag {item.Auftragsnummer} nach {item.Adresse.Ort} begonnen. Dauer [Tage]: {item.Adresse.Versandzeit}", ConsoleColor.Cyan);
+        await Task.Delay(item.Adresse.Versandzeit * 1000, cancellationToken);
+        Print($"Ware von Auftrag {item.Auftragsnummer} in {item.Adresse.Ort} ausgeliefert", ConsoleColor.Cyan);
+      }
+      Print($"Logistiker ({name}) hat alle Versandaufträge abgeschlossen", ConsoleColor.Cyan);
+    }
+    catch (OperationCanceledException)
+    {
+      Print("Logistiker ({name}) hat Arbeit abgebrochen", ConsoleColor.Red);
+    }
+  }
+
+
   static readonly object syncObj = new();
   static void Print(string text, ConsoleColor color=ConsoleColor.White)
   {
@@ -199,6 +190,17 @@ public class Program
       Console.ForegroundColor = previousColor;
 
     }
+  }
+  private static void AbbruchDurchBenutzerÜberwachen()
+  {
+    Task.Run(() =>
+    {
+
+      Console.WriteLine("Zum Beenden Eingabetaste drücken");
+      Console.ReadLine();
+      Console.WriteLine("Abbruch aller Vorgänge");
+      cancellationTokenSource.Cancel();
+    });
   }
 
 }

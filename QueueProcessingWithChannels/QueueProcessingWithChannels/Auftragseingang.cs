@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.CompilerServices;
 
 namespace QueueProcessingWithChannels
 {
@@ -13,7 +8,8 @@ namespace QueueProcessingWithChannels
 
   public class Auftragseingang
   {
-    private readonly Artikel[] artikelliste = new Artikel[] {
+    private readonly Artikel[] artikelliste = new Artikel[]
+    {
       new Artikel("Hemd",2),
       new Artikel("Geschirr",5),
       new Artikel("Bild",3),
@@ -46,24 +42,24 @@ namespace QueueProcessingWithChannels
     /// <param name="cancellationToken">Abbruch-Token</param>
     /// <returns>Bestellungen</returns>
     public async IAsyncEnumerable<Bestellung> GetBestellungen(
-      int anzahl, 
+      int anzahl,
       [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-      int auftragsnummer = 1;
+      int auftragsnummer = 0;
 
       // Gewünschte Anzahl Bestellungen generieren
-      while (anzahl > 1)
+      while (anzahl >= 1)
       {
         anzahl--;
         auftragsnummer++;
 
         // try/catch nur, damit der Debugger hier nicht stoppt
-        try 
+        try
         {
           // Abstand zwischen Bestellungseingängen simulieren
           await Task.Delay(300, cancellationToken);
         }
-        catch (Exception )
+        catch (Exception)
         {
           Console.WriteLine("Bestellungsannahme abgebrochen");
           yield break;
