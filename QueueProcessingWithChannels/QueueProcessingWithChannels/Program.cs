@@ -109,7 +109,6 @@ public class Program
       try
       {
         await channelAuftragseingang.Writer.WriteAsync(bestellung, cancellationToken);
-
       }
       catch (TaskCanceledException)
       {
