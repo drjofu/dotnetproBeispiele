@@ -18,3 +18,6 @@ Console.WriteLine(stopwatch.ElapsedMilliseconds);
 await 1000;
 
 Console.WriteLine(stopwatch.ElapsedMilliseconds);
+
+// TODO:
+// await "nächste Ausgabe der dotnetpro";

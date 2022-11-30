@@ -27,10 +27,10 @@ namespace FunWithAwaitables
     // https://learn.microsoft.com/en-us/dotnet/api/system.runtime.compilerservices.taskawaiter?f1url=%3FappId%3DDev16IDEF1%26l%3DEN-US%26k%3Dk(System.Runtime.CompilerServices.TaskAwaiter)%3Bk(DevLang-csharp)%26rd%3Dtrue&view=net-6.0
     // TaskAwaiter: This type is intended for compiler use only.
 
-    public TaskAwaiter GetAwaiter()
-    {
-      return Task.Delay(timeSpan).GetAwaiter();
-    }
+    //public TaskAwaiter GetAwaiter()
+    //{
+    //  return Task.Delay(timeSpan).GetAwaiter();
+    //}
   }
 
 
