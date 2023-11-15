@@ -35,47 +35,47 @@ namespace LoggingBeispiele
       _startTime = DateTime.UtcNow;
     }
 
-    [Benchmark]
-    public void InterpolatedEnabled()
-    {
-      _logger.LogInformation($"Testing a message by {_person} and a {_startTime}");
-    }
+    //[Benchmark]
+    //public void InterpolatedEnabled()
+    //{
+    //  _logger.LogInformation($"Testing a message by {_person} and a {_startTime}");
+    //}
 
-    [Benchmark]
-    public void InterpolatedDisabled()
-    {
-      _logger.LogDebug($"Testing a message by {_person} and a {_startTime}");
-    }
+    //[Benchmark]
+    //public void InterpolatedDisabled()
+    //{
+    //  _logger.LogDebug($"Testing a message by {_person} and a {_startTime}");
+    //}
 
-    [Benchmark]
-    public void DirectCallEnabled()
-    {
-      _logger.LogInformation(Message, _person, _startTime);
-    }
+    //[Benchmark]
+    //public void DirectCallEnabled()
+    //{
+    //  _logger.LogInformation(Message, _person, _startTime);
+    //}
 
-    [Benchmark]
-    public void DirectCallDisabled()
-    {
-      _logger.LogDebug(Message, _person, _startTime);
-    }
+    //[Benchmark]
+    //public void DirectCallDisabled()
+    //{
+    //  _logger.LogDebug(Message, _person, _startTime);
+    //}
 
-    [Benchmark]
-    public void IsEnabledCheckEnabled()
-    {
-      if (_logger.IsEnabled(LogLevel.Information))
-      {
-        _logger.LogInformation(Message, _person, _startTime);
-      }
-    }
+    //[Benchmark]
+    //public void IsEnabledCheckEnabled()
+    //{
+    //  if (_logger.IsEnabled(LogLevel.Information))
+    //  {
+    //    _logger.LogInformation(Message, _person, _startTime);
+    //  }
+    //}
 
-    [Benchmark]
-    public void IsEnabledCheckDisabled()
-    {
-      if (_logger.IsEnabled(LogLevel.Debug))
-      {
-        _logger.LogDebug(Message, _person, _startTime);
-      }
-    }
+    //[Benchmark]
+    //public void IsEnabledCheckDisabled()
+    //{
+    //  if (_logger.IsEnabled(LogLevel.Debug))
+    //  {
+    //    _logger.LogDebug(Message, _person, _startTime);
+    //  }
+    //}
 
     [Benchmark]
     public void SourceGeneratorEnabled()
@@ -101,6 +101,18 @@ namespace LoggingBeispiele
       LogDynamicLevel(LogLevel.Debug, _person, _startTime);
     }
 
+    [Benchmark]
+    public void LogDirect()
+    {
+      var info = new LogInformation() { Person = _person, StartTime = _startTime };
+      _logger.Log<LogInformation>(LogLevel.Warning, new(123), info, null, (li, _) => $"Testing a message by {li.Person} and a {li.StartTime}");
+    }
+
+    struct LogInformation
+    {
+      public Person Person { get; set; }
+      public DateTime StartTime { get; set; }
+    }
 
   }
 }
