@@ -34,10 +34,10 @@ var name = "Peter Pan";
 //logger.LogInformation(string.Format("Bearbeitung von {0} gestartet", name));
 
 // string interpolation (ab C# 6)
-logger.LogInformation($"Bearbeitung von {name} gestartet");
+//logger.LogInformation($"Bearbeitung von {name} gestartet");
 
 // Log-Template mit Parameter(n)
-logger.LogInformation("Bearbeitung von {name} gestartet", name);
+//logger.LogInformation("Bearbeitung von {name} gestartet", name);
 
 //if (logger.IsEnabled(LogLevel.Information))
 //  logger.LogInformation("...");
@@ -45,22 +45,36 @@ logger.LogInformation("Bearbeitung von {name} gestartet", name);
 //LogMessages.LogNameAndAge(logger, "Peter Pan", 27, null);
 //logger.LogNameAndAgeHelper("Peter Pan", 99);
 
-logger.LogPrecompiled("Peter Pan", 39, LogLevel.Error);
+//logger.LogPrecompiled("Peter Pan", 39, LogLevel.Error);
 
 //var exception = new ApplicationException("I did not expect this to happen...");
 //logger.LogExceptionPrecompiled(exception);
 
-logger.Log<LogInformation>(
-  LogLevel.Warning,
-  123, // EventId
-  new LogInformation 
-  {
-    Name = "Donald Duck", 
-    Age = 76 
-  }, 
-  null, 
-  (li, _) => $"Bearbeitung von {li.Name}, Alter: {li.Age} abgeschlossen");
+//logger.Log<LogInformation>(
+//  LogLevel.Warning,
+//  123, // EventId
+//  new LogInformation 
+//  {
+//    Name = "Donald Duck", 
+//    Age = 76 
+//  }, 
+//  null, 
+//  (li, _) => $"Bearbeitung von {li.Name}, Alter: {li.Age} abgeschlossen");
 
+
+Person person = new() { Name = "Micky Mouse", Age = 55, Id = 177, Address = "Mouseton" };
+Dictionary<string, object> data = new Dictionary<string, object> { ["info"] = "nur zur Information", ["date"] = DateTime.Now, ["person"] = person };
+
+logger.LogPerson(person);
+
+// https://learn.microsoft.com/de-de/dotnet/api/microsoft.extensions.logging.loggermessagehelper.stringify?view=dotnet-plat-ext-8.0
+
+logger.LogKeyValueList(data);
+
+logger.LogList(["eins", "zwei", "drei"]);
+
+
+logger.LogPerson2(person);
 
 struct LogInformation
 {
