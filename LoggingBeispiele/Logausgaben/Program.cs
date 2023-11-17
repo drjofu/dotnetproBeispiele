@@ -27,39 +27,39 @@ var logger = loggerFactory.CreateLogger("Beispiel-Logger");
 
 var name = "Peter Pan";
 
-//// string concatination
-//logger.LogInformation("Bearbeitung von " + name + " gestartet");
+// string concatination
+logger.LogInformation("Bearbeitung von " + name + " gestartet");
 
-//// klassisches string.Format
-//logger.LogInformation(string.Format("Bearbeitung von {0} gestartet", name));
+// klassisches string.Format
+logger.LogInformation(string.Format("Bearbeitung von {0} gestartet", name));
 
 // string interpolation (ab C# 6)
-//logger.LogInformation($"Bearbeitung von {name} gestartet");
+logger.LogInformation($"Bearbeitung von {name} gestartet");
 
 // Log-Template mit Parameter(n)
-//logger.LogInformation("Bearbeitung von {name} gestartet", name);
+logger.LogInformation("Bearbeitung von {name} gestartet", name);
 
-//if (logger.IsEnabled(LogLevel.Information))
-//  logger.LogInformation("...");
+if (logger.IsEnabled(LogLevel.Information))
+  logger.LogInformation("...");
 
-//LogMessages.LogNameAndAge(logger, "Peter Pan", 27, null);
-//logger.LogNameAndAgeHelper("Peter Pan", 99);
+LogMessages.LogNameAndAge(logger, "Peter Pan", 27, null);
+logger.LogNameAndAgeHelper("Peter Pan", 99);
 
-//logger.LogPrecompiled("Peter Pan", 39, LogLevel.Error);
+logger.LogPrecompiled("Peter Pan", 39, LogLevel.Error);
 
-//var exception = new ApplicationException("I did not expect this to happen...");
-//logger.LogExceptionPrecompiled(exception);
+var exception = new ApplicationException("I did not expect this to happen...");
+logger.LogExceptionPrecompiled(exception);
 
-//logger.Log<LogInformation>(
-//  LogLevel.Warning,
-//  123, // EventId
-//  new LogInformation 
-//  {
-//    Name = "Donald Duck", 
-//    Age = 76 
-//  }, 
-//  null, 
-//  (li, _) => $"Bearbeitung von {li.Name}, Alter: {li.Age} abgeschlossen");
+logger.Log<LogInformation>(
+  LogLevel.Warning,
+  123, // EventId
+  new LogInformation
+  {
+    Name = "Donald Duck",
+    Age = 76
+  },
+  null,
+  (li, _) => $"Bearbeitung von {li.Name}, Alter: {li.Age} abgeschlossen");
 
 
 
