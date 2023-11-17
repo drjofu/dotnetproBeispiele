@@ -13,6 +13,7 @@ namespace Logausgaben
     public string Name { get; set; }
     public int Age { get; set; }
 
+    [LogPropertyIgnore]
     public string Address { get; set; }
 
     public override string ToString()

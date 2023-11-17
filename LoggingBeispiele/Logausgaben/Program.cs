@@ -62,19 +62,7 @@ var name = "Peter Pan";
 //  (li, _) => $"Bearbeitung von {li.Name}, Alter: {li.Age} abgeschlossen");
 
 
-Person person = new() { Name = "Micky Mouse", Age = 55, Id = 177, Address = "Mouseton" };
-Dictionary<string, object> data = new Dictionary<string, object> { ["info"] = "nur zur Information", ["date"] = DateTime.Now, ["person"] = person };
 
-logger.LogPerson(person);
-
-// https://learn.microsoft.com/de-de/dotnet/api/microsoft.extensions.logging.loggermessagehelper.stringify?view=dotnet-plat-ext-8.0
-
-logger.LogKeyValueList(data);
-
-logger.LogList(["eins", "zwei", "drei"]);
-
-
-logger.LogPerson2(person);
 
 struct LogInformation
 {
