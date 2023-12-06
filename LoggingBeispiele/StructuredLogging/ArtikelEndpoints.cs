@@ -2,11 +2,11 @@
 namespace StructuredLogging
 {
   public static partial class ArtikelEndpoints
-  {
+  {public  record Info(string Infotext="eine Info");
     [LoggerMessage(Message = "Bearbeitung Artikel Nr. {artikelnummer}", EventId = 123)]
-    public static partial void LogArtikelV3Precompiled(this ILogger logger, int artikelnummer, [LogProperties] Artikel artikel, LogLevel logLevel = LogLevel.Warning);
+    public static partial void LogArtikelV3Precompiled(this ILogger logger, int artikelnummer, [LogProperties] Artikel artikel,[LogProperties]Info info, LogLevel logLevel = LogLevel.Warning);
 
-    public static void LogArtikelV3Precompiled(this ILogger logger, Artikel artikel, LogLevel logLevel = LogLevel.Warning) => LogArtikelV3Precompiled(logger, artikel.Nummer, artikel, logLevel);
+    public static void LogArtikelV3Precompiled(this ILogger logger, Artikel artikel, LogLevel logLevel = LogLevel.Warning) => LogArtikelV3Precompiled(logger, artikel.Nummer, artikel,new Info(), logLevel);
 
     [LoggerMessage(Message = "Bearbeitung Artikel {artikel}", EventId = 123)]
     public static partial void LogArtikelV4Precompiled(this ILogger logger, Artikel artikel, LogLevel logLevel = LogLevel.Warning);
