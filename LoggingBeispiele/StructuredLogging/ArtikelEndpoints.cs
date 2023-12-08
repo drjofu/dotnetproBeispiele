@@ -47,7 +47,14 @@ namespace StructuredLogging
 
       try
       {
-        throw new ApplicationException("damit war zu rechnen...", new InvalidOperationException("so geht das nicht..."));
+        try
+        {
+          throw new InvalidOperationException("so geht das nicht...");
+        }
+        catch (Exception ex)
+        {
+          throw new ApplicationException("damit war zu rechnen...", ex);
+        }
       }
       catch (Exception ex)
       {
@@ -66,6 +73,7 @@ namespace StructuredLogging
       logger.LogKeyValueList(data);
       return "Hallo";
     }
+
     private static string GetWithErrorlist(ILoggerFactory loggerFactory)
     {
       var logger = loggerFactory.CreateLogger(nameof(ArtikelEndpoints));
